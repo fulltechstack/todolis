@@ -1,11 +1,51 @@
-<div class="task-board">
-    <ul class="task-list">
-        <li class="task-item" *ngFor="let task of tasks">
-            <span class="task-name">{{ task }}</span>
-        </li>
-    </ul>
-    <hr/>
-    <a href="#" class="add-task-link" (click)="addTask()">
-        <i class="fas fa-plus"></i><span class="link-text">Add task</span>
-    </a>
+<div class="row d-flex justify-content-center container">
+    <div class="col-md-4">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    Tasks
+                </div>
+            </div>
+            <div class="scrollable-container">
+                <div class="custom-scrollbar">
+                    <ul class=" list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let task of tasks">
+                            <div [ngClass]="task.color + ' todo-indicator'"></div>
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left mr-2">
+                                        <div class="custom-checkbox custom-control">
+                                            <input class="custom-control-input" [id]="'customCheckbox-' + task.id"
+                                                type="checkbox" />
+                                            <label class="custom-control-label"
+                                                [for]="'customCheckbox-' + task.id">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">{{ task.name }}
+                                            <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
+                                        </div>
+                                        <div class="widget-subheading"><i>By {{ task.createdBy }}</i></div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <button class="border-0 btn-transition btn btn-outline-success">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                        <button class="border-0 btn-transition btn btn-outline-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-block text-right card-footer">
+                <a href="#" class="add-task-link" (click)="addTask()">
+                    <i class="fas fa-plus"></i><span class="link-text">Add task</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

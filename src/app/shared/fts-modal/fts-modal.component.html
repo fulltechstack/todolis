@@ -1,0 +1,23 @@
+<div class="modal-overlay">
+    <div class="fts-modal">
+        <div class="modal-header">
+            <!-- <span>{{ data.isAdd ? 'Add' : 'Edit' }} Modal</span> -->
+            <!-- <span class="close" (click)="closeModal($event)">&times;</span> -->
+        </div>
+        <div class="modal-content">
+            <div *ngIf="data.isAdd" class="input-section">
+                <input type="text" class="borderless-input tname" placeholder="Task name">
+                <div class="scrollable-container">
+                    <textarea class="custom-scrollbar" placeholder="Description"></textarea>
+                </div>
+            </div>
+            <div *ngIf="!data.isAdd" class="display-section">
+                <input type="text" class="borderless-input" placeholder="Enter text">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="close-button modal-button" (click)="closeModal($event)">Cancel</button>
+            <button *ngIf="data.isAdd" class="save-button modal-button" (click)="save()">Save</button>
+        </div>
+    </div>
+</div>

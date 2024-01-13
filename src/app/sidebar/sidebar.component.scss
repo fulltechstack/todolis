@@ -68,13 +68,13 @@
 
 .main-content {
     margin-left: 200px;
-    padding: 20px;
+    padding-top: 15px;
     transition: margin-left 0.3s;
 }
 
-.dashboard-heading{
-    padding-top: 30px;
-}
+// .dashboard-heading{
+//     padding-top: 30px;
+// }
 
 /* Adjust main content margin when sidebar is collapsed */
 .sidebar.collapsed~.main-content {

@@ -1,14 +1,15 @@
 <div class="sidebar" [class.collapsed]="sidebarCollapsed">
-    <a href="#"><i class="fas fa-plus"></i><span class="link-text">Add task</span></a>
+    <a href="#"><i class="fas fa-tasks"></i><span class="link-text">Add task</span></a>
     <!-- <a href="#"><i class="fas fa-address-book"></i><span class="link-text">History</span></a>
     <a href="#"><i class="fas fa-address-book"></i><span class="link-text">Contact</span></a> -->
-    <div class="sidebar-toggle" (click)="toggleSidebar()">
+    <!-- Uncomment this to turn on and off toggle -->
+    <!-- <div class="sidebar-toggle" (click)="toggleSidebar()">
         <i class="toggle-icon fas" [class.fa-arrow-right]="sidebarCollapsed"
             [class.fa-arrow-left]="!sidebarCollapsed"></i>
-    </div>
+    </div> -->
 </div>
 <div class="main-content">
-    <h3 class="dashboard-heading">todo-lis</h3>
+    <!-- <h3 class="dashboard-heading">todo-lis</h3> -->
     <app-task-board></app-task-board>
     <!-- Your content here -->
 </div>

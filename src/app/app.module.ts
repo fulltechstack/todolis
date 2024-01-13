@@ -5,20 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
-import { TaskModalComponent } from './task-modal/task-modal.component';
+import { FtsModalComponent } from './shared/fts-modal/fts-modal.component';
+import { FormsModule } from '@angular/forms';
+import { FtsModalService } from './shared/fts-modal.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     TaskBoardComponent,
-    TaskModalComponent
+    FtsModalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [FtsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
