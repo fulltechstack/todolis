@@ -1,0 +1,33 @@
+.task-board {
+    padding: 20px;
+
+    .task-list {
+        list-style: none;
+        padding: 0;
+
+        .task-item {
+            margin-bottom: 10px;
+        }
+    }
+
+    .add-task-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px;
+        color: #756AB6;
+        text-decoration: none;
+        font-size: 16px;
+
+        .fas.fa-plus {
+            background-color: #756AB6;
+            border-radius: 48%;
+            padding: 3px;
+            margin-right: 5px;
+            color: #FAF3F0;
+        }
+
+        .link-text {
+            margin-left: 5px;
+        }
+    }
+}

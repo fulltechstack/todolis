@@ -1,56 +1,82 @@
 .sidebar {
-    width: 200px;
+    width: 150px;
     height: 100%;
-    background: #444;
+    background: #FAF3F0;
     position: fixed;
     left: 0;
     transition: width 0.3s;
     box-sizing: border-box;
     padding-top: 20px;
-  
-    .sidebar-header {
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-  
-      .toggle-icon {
-        cursor: pointer;
-        color: white;
-        margin-right: 10px;
-      }
-    }
-  
+
     a {
-      color: white;
-      display: block;
-      padding: 10px;
-      text-decoration: none;
+        color: #756AB6;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        text-decoration: none;
+
+        .fa-icon {
+            min-width: 20px; // Ensure icons have a consistent width
+            text-align: center;
+        }
+
+        .fas.fa-plus {
+            background-color: #756AB6;
+            border-radius: 48%;
+            padding: 3px;
+            margin-right: 5px;
+            color: #FAF3F0;
+        }
+
+        .link-text {
+            margin-left: 10px;
+            transition: opacity 0.3s;
+        }
     }
-  
+
     &.collapsed {
-      width: 50px;
-  
-      .toggle-icon,
-      a {
-        text-align: center;
-        padding-left: 0;
-        padding-right: 0;
-      }
-  
-      .toggle-icon {
-        margin-right: 0;
-      }
+        width: 50px;
+
+        a {
+            justify-content: center;
+
+            .link-text {
+                display: none;
+            }
+        }
+
     }
-  }
-  
-  .main-content {
+
+    .sidebar-toggle {
+        position: absolute;
+        top: 0px;
+        right: -30px; // Adjust as needed for expanded state
+        width: 30px;
+        height: 30px;
+        color: #756AB6;
+        background-color: #EEE7DA;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        .toggle-icon {
+            color: #756AB6;
+        }
+    }
+}
+
+.main-content {
     margin-left: 200px;
     padding: 20px;
     transition: margin-left 0.3s;
-  }
-  
-  /* Adjust main content margin when sidebar is collapsed */
-  .sidebar.collapsed ~ .main-content {
-    margin-left: 50px;
-  }
-  
+}
+
+.dashboard-heading{
+    padding-top: 30px;
+}
+
+/* Adjust main content margin when sidebar is collapsed */
+.sidebar.collapsed~.main-content {
+    margin-left: 80px;
+}
