@@ -1,5 +1,6 @@
 import { Component, Input, ElementRef } from '@angular/core';
 import { FtsModalService } from '../fts-modal.service';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-fts-modal',
@@ -71,18 +72,11 @@ export class FtsModalComponent {
     // Save the updated tasks array back to localStorage
     localStorage.setItem('tasks', JSON.stringify(existingTasks));
 
+    this.ftsModalService.notifyTaskUpdated();
+
     // Close the modal or perform any other action as needed
     this.ftsModalService.closeModal();
   }
 
 
-}
-
-export interface Task {
-  id: string;
-  name: string;
-  status: string;
-  description: string;
-  color: string;
-  sequence: number;
 }

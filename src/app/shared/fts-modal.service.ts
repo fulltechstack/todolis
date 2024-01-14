@@ -1,5 +1,6 @@
 import { Injectable, ComponentFactoryResolver, ApplicationRef, Injector, EmbeddedViewRef, Type } from '@angular/core';
 import { FtsModalComponent } from './fts-modal/fts-modal.component';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,13 @@ import { FtsModalComponent } from './fts-modal/fts-modal.component';
 export class FtsModalService {
   private modalComponentRef: any;
   private isModalOpen = false;
+  public taskUpdatedSubject = new Subject<void | null>();
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector
-  ) {}
+  ) { }
 
   openModal(data: any): void {
     if (!this.isModalOpen) {
@@ -46,5 +48,9 @@ export class FtsModalService {
 
       this.isModalOpen = false;
     }
+  }
+
+  notifyTaskUpdated() {
+    this.taskUpdatedSubject.next();
   }
 }

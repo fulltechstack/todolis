@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FtsModalService } from '../shared/fts-modal.service';
+import { Task } from '../shared/models/task.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-board',
@@ -21,6 +23,8 @@ export class TaskBoardComponent {
     { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', sequence: 10, color: 'bg-yellow' },
   ];
 
+  private taskUpdatedSubscription: Subscription;
+
   ngOnInit() {
     // Retrieve tasks from local storage
     const existingTasksString = localStorage.getItem('tasks');
@@ -30,7 +34,17 @@ export class TaskBoardComponent {
     this.tasks = existingTasks.length > 0 ? existingTasks : this.tasks;
   }
 
-  constructor(private ftsModalService: FtsModalService) { }
+  constructor(private ftsModalService: FtsModalService) {
+    this.taskUpdatedSubscription = this.ftsModalService.taskUpdatedSubject.subscribe(() => {
+      // Update the tasks array when notified
+      this.updateTasks();
+    });
+  }
+
+  ngOnDestroy() {
+    // Unsubscribe from the subject to prevent memory leaks
+    this.taskUpdatedSubscription.unsubscribe();
+  }
 
   addTask() {
     const data = {
@@ -48,4 +62,32 @@ export class TaskBoardComponent {
     this.ftsModalService.openModal(data);
   }
 
+  deleteTask(taskToDelete: Task) {
+    // Get existing tasks from localStorage (if any)
+    const existingTasksString = localStorage.getItem('tasks');
+    let existingTasks: Task[] = existingTasksString ? JSON.parse(existingTasksString) : [];
+
+    // Find the index of the task to delete
+    const taskIndex = existingTasks.findIndex((t: Task) => t.id === taskToDelete.id);
+
+    if (taskIndex !== -1) {
+      // Remove the task from the existing tasks array
+      existingTasks.splice(taskIndex, 1);
+
+      // Save the updated tasks array back to localStorage
+      localStorage.setItem('tasks', JSON.stringify(existingTasks));
+
+      // Optionally, you can update the tasks property used in your component
+      this.tasks = existingTasks;
+    }
+  }
+
+  private updateTasks() {
+    // Retrieve tasks from local storage
+    const existingTasksString = localStorage.getItem('tasks');
+    const existingTasks = existingTasksString ? JSON.parse(existingTasksString) : [];
+
+    // Update the tasks array
+    this.tasks = existingTasks;
+  }
 }
