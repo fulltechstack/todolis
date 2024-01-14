@@ -1,6 +1,6 @@
 <div class="row d-flex justify-content-center container">
-    <div class="col-md-4">
-        <div class="card-hover-shadow-2x mb-3 card">
+    <div class="col-md-6">
+        <div class="card-hover-shadow-2x card">
             <div class="card-header-tab card-header">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                     Tasks
@@ -25,11 +25,12 @@
                                         <div class="widget-heading">{{ task.name }}
                                             <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
                                         </div>
-                                        <div class="widget-subheading"><i>By {{ task.createdBy }}</i></div>
+                                        <div class="widget-subheading"><i>By {{ task.description }}</i></div>
                                     </div>
                                     <div class="widget-content-right">
-                                        <button class="border-0 btn-transition btn btn-outline-success">
-                                            <i class="fa fa-check"></i>
+                                        <button class="border-0 btn-transition btn btn-outline-success"
+                                            (click)="editTask(task)">
+                                            <i class="fa fa-pencil"></i>
                                         </button>
                                         <button class="border-0 btn-transition btn btn-outline-danger">
                                             <i class="fa fa-trash"></i>
@@ -43,7 +44,7 @@
             </div>
             <div class="d-block text-right card-footer">
                 <a href="#" class="add-task-link" (click)="addTask()">
-                    <i class="fas fa-plus"></i><span class="link-text">Add task</span>
+                    <i class="fa fa-plus"></i><span class="link-text">Add task</span>
                 </a>
             </div>
         </div>

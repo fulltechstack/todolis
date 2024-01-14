@@ -12,12 +12,16 @@
                 </div>
             </div>
             <div *ngIf="!data.isAdd" class="display-section">
-                <input type="text" class="borderless-input" placeholder="Enter text">
+                <input type="text" class="borderless-input tname" placeholder="Task name" [(ngModel)]="taskName">
+                <div class="scrollable-container">
+                    <textarea class="custom-scrollbar" placeholder="Description"
+                        [(ngModel)]="taskDescription"></textarea>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
             <button class="close-button modal-button" (click)="closeModal($event)">Cancel</button>
-            <button *ngIf="data.isAdd" class="save-button modal-button" (click)="save()">Save</button>
+            <button class="save-button modal-button" (click)="save()">Save</button>
         </div>
     </div>
 </div>
