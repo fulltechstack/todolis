@@ -9,7 +9,9 @@
             <div class="scrollable-container">
                 <div class="custom-scrollbar">
                     <ul class=" list-group list-group-flush">
-                        <li class="list-group-item" *ngFor="let task of tasks">
+                        <li draggable="true" [draggable]="true" (dragstart)="handleDragStart(i)"
+                            (dragover)="handleDragOver(i)" (dragend)="handleDragEnd()" class="list-group-item"
+                            *ngFor="let task of tasks;let i = index">
                             <div [ngClass]="task.color + ' todo-indicator'"></div>
                             <div class="widget-content p-0">
                                 <div class="widget-content-wrapper">
@@ -25,7 +27,7 @@
                                         <div class="widget-heading">{{ task.name }}
                                             <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
                                         </div>
-                                        <div class="widget-subheading"><i>By {{ task.description }}</i></div>
+                                        <div class="widget-subheading"><i> {{ task.description }}</i></div>
                                     </div>
                                     <div class="widget-content-right">
                                         <button class="border-0 btn-transition btn btn-outline-success"

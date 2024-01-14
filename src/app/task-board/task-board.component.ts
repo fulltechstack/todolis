@@ -23,6 +23,8 @@ export class TaskBoardComponent {
     { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', sequence: 10, color: 'bg-yellow' },
   ];
 
+  draggedIndex: number | null = null;
+
   private taskUpdatedSubscription: Subscription;
 
   ngOnInit() {
@@ -90,4 +92,35 @@ export class TaskBoardComponent {
     // Update the tasks array
     this.tasks = existingTasks;
   }
+
+  handleDragStart(index: number) {
+    this.draggedIndex = index;
+  }
+
+  handleDragOver(index: number) {
+    if (this.draggedIndex === null) return;
+
+    const updatedTasks = [...this.tasks];
+    const draggedTask = updatedTasks[this.draggedIndex];
+
+    draggedTask.sequence = index + 1;
+
+    updatedTasks.splice(this.draggedIndex, 1);
+    updatedTasks.splice(index, 0, draggedTask);
+
+    updatedTasks.forEach((task, i) => {
+      task.sequence = i + 1;
+    });
+
+    this.tasks = updatedTasks;
+    this.draggedIndex = index;
+
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    this.ftsModalService.notifyTaskUpdated();
+  }
+
+  handleDragEnd() {
+    this.draggedIndex = null;
+  }
+
 }
