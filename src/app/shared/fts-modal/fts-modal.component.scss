@@ -34,6 +34,7 @@ $secondary-color: #0056b3;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 8px;
+    opacity: 0.8;
 }
 
 // Modal Content Styles
@@ -143,4 +144,69 @@ $secondary-color: #0056b3;
 .tname {
     font-size: 14px;
     font-style: bold;
+}
+
+
+/* Custom Dropdown Styles */
+.fts-dropdown {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.fts-dropdown-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    background: #fff;
+    font-weight: bold;
+}
+
+.fts-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    z-index: 1;
+}
+
+.fts-dropdown-menu.show {
+    display: block;
+}
+
+.fts-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.fts-dropdown-item i {
+    margin-right: 10px;
+}
+
+/* Color Classes */
+.color-purple {
+    color: #9c33d9;
+    opacity: 0.8;
+}
+
+.color-yellow {
+    color: #f7b924;
+    opacity: 0.8;
+}
+
+.color-pink {
+    color: #d83fcb;
+    opacity: 0.8;
 }

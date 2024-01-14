@@ -12,71 +12,76 @@ export class FtsModalComponent {
   taskName: string = '';
   taskDescription: string = '';
 
+  selectedColor: string = 'yellow';
+  isDropdownOpen: boolean = false;
+
+  colorBackgroundMap: { [key: string]: string } = {
+    purple: '#9c33d9',
+    yellow: '#F7B924',
+    pink: '#d83fcb'
+  };
+
   constructor(
     private ftsModalService: FtsModalService,
-    private elementRef: ElementRef // Inject ElementRef
+    private elementRef: ElementRef
   ) { }
 
   ngOnInit() {
     if (!this.data.isAdd) {
       this.taskName = this.data.taskData.name;
       this.taskDescription = this.data.taskData.description;
+      this.selectedColor = this.data.taskData.color; // Set selectedColor based on task color
     }
   }
 
   closeModal(event: MouseEvent): void {
-    // Get the DOM element of the modal
     const modalElement = this.elementRef.nativeElement;
-
-    // Check if the click event target is the modal itself or any of its children
     if (modalElement.contains(event.target)) {
       this.ftsModalService.closeModal();
     }
   }
 
   save() {
-    // Create a new task object based on the form data
     const newTask: Task = {
       id: 'taskName' + Math.random(),
       name: this.taskName,
       status: 'Rejected',
       description: this.taskDescription,
       sequence: 8,
-      color: 'bg-yellow'
+      color: this.selectedColor // Set the task color from selectedColor
     };
 
-    // If it's an edit operation, update the newTask with existing data
     if (!this.data.isAdd && this.data.taskData) {
       newTask.id = this.data.taskData.id;
       newTask.status = this.data.taskData.status;
       newTask.sequence = this.data.taskData.sequence;
-      newTask.color = this.data.taskData.color;
+      newTask.color = this.selectedColor; // Update task color from selectedColor
     }
 
-    // Get existing tasks from localStorage (if any)
     const existingTasksString = localStorage.getItem('tasks');
     let existingTasks: Task[] = existingTasksString ? JSON.parse(existingTasksString) : [];
 
     if (!this.data.isAdd && this.data.taskData) {
-      // If it's an edit operation, find and update the existing task
       const existingIndex = existingTasks.findIndex((t: Task) => t.id === newTask.id);
       if (existingIndex !== -1) {
         existingTasks[existingIndex] = { ...existingTasks[existingIndex], ...newTask };
       }
     } else {
-      // If it's not an edit operation, generate a new sequence and add the task
       newTask.sequence = existingTasks.length + 1;
       existingTasks.push(newTask);
     }
 
-    // Save the updated tasks array back to localStorage
     localStorage.setItem('tasks', JSON.stringify(existingTasks));
-
     this.ftsModalService.notifyTaskUpdated();
-
-    // Close the modal or perform any other action as needed
     this.ftsModalService.closeModal();
   }
 
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 
+  selectColor(color: string) {
+    this.selectedColor = color; // Update the selected color
+    this.isDropdownOpen = false;
+  }
 }

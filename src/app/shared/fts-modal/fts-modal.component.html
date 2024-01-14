@@ -1,6 +1,6 @@
 <div class="modal-overlay">
     <div class="fts-modal">
-        <div class="modal-header">
+        <div class="modal-header" [ngStyle]="{ 'background-color': colorBackgroundMap[selectedColor] }">
             <!-- <span>{{ data.isAdd ? 'Add' : 'Edit' }} Modal</span> -->
             <!-- <span class="close" (click)="closeModal($event)">&times;</span> -->
         </div>
@@ -19,6 +19,27 @@
                         [(ngModel)]="taskDescription"></textarea>
                 </div>
             </div>
+            <div class="fts-dropdown">
+                <button class="fts-dropdown-button" (click)="toggleDropdown()">
+                    {{ selectedColor ? selectedColor : 'Select Color' }} <i class="fa fa-caret-down"></i>
+                </button>
+                <ul class="fts-dropdown-menu" [class.show]="isDropdownOpen">
+                    <li class="fts-dropdown-item" (click)="selectColor('purple')"
+                        [class.selected]="selectedColor === 'purple'">
+                        <i class="fas fa-circle color-purple"></i> Purple
+                    </li>
+                    <li class="fts-dropdown-item" (click)="selectColor('yellow')"
+                        [class.selected]="selectedColor === 'yellow'">
+                        <i class="fas fa-circle color-yellow"></i> Yellow
+                    </li>
+                    <li class="fts-dropdown-item" (click)="selectColor('pink')"
+                        [class.selected]="selectedColor === 'pink'">
+                        <i class="fas fa-circle color-pink"></i> Pink
+                    </li>
+                </ul>
+            </div>
+
+
         </div>
         <div class="modal-footer">
             <button class="close-button modal-button" (click)="closeModal($event)">Cancel</button>
