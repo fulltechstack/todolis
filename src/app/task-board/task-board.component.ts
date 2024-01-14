@@ -11,16 +11,9 @@ import { Subscription } from 'rxjs';
 export class TaskBoardComponent {
 
   tasks = [
-    { id: 'task1', name: 'Call Sam For payments', status: 'Rejected', description: 'Bob', sequence: 1, color: 'bg-yellow' },
-    { id: 'task2', name: 'Make payment to Bluedart', status: 'New', description: 'Johnny', sequence: 2, color: 'bg-purple' },
-    { id: 'task3', name: 'Office rent', status: 'In Progress', description: 'Samino!', sequence: 3, color: 'bg-pink' },
-    { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', sequence: 4, color: 'bg-yellow' },
-    { id: 'task5', name: 'Ask for Lunch to Clients', status: 'In Progress', description: 'Office Admin', sequence: 5, color: 'bg-pink' },
-    { id: 'task6', name: 'Client Meeting at 11 AM', status: 'Pending', description: 'CEO', sequence: 6, color: 'bg-yellow' },
-    { id: 'task1', name: 'Call Sam For payments', status: 'Rejected', description: 'Bob', sequence: 7, color: 'bg-yellow' },
-    { id: 'task2', name: 'Make payment to Bluedart', status: 'New', description: 'Johnny', sequence: 8, color: 'bg-purple' },
-    { id: 'task3', name: 'Office rent', status: 'In Progress', description: 'Samino!', sequence: 9, color: 'bg-pink' },
-    { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', sequence: 10, color: 'bg-yellow' },
+    { id: 'task1', name: 'Sample task 1', status: 'Rejected', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2 },
+    { id: 'task2', name: 'Sample task 2', status: 'New', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1 },
+    { id: 'task3', name: 'Sample task 3', status: 'In Progress', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3 },
   ];
 
   draggedIndex: number | null = null;

@@ -5,4 +5,5 @@ export interface Task {
     description: string;
     color: string;
     sequence: number;
+    priority: number;
 }

@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { FtsModalService } from '../fts-modal.service';
 import { Task } from '../models/task.model';
 
@@ -13,12 +13,20 @@ export class FtsModalComponent {
   taskDescription: string = '';
 
   selectedColor: string = 'yellow';
+  selectedPriority: number = 1;
   isDropdownOpen: boolean = false;
+  isPriorityDropdownOpen: boolean = false;
 
   colorBackgroundMap: { [key: string]: string } = {
     purple: '#9c33d9',
     yellow: '#F7B924',
     pink: '#d83fcb'
+  };
+
+  priorityColorMap: { [key: string]: string } = {
+    1: '#B6E2A1',
+    2: '#F7B924',
+    3: '#FF7878'
   };
 
   constructor(
@@ -27,10 +35,11 @@ export class FtsModalComponent {
   ) { }
 
   ngOnInit() {
-    if (!this.data.isAdd) {
+    if (!this.data?.isAdd) {
       this.taskName = this.data.taskData.name;
       this.taskDescription = this.data.taskData.description;
-      this.selectedColor = this.data.taskData.color; // Set selectedColor based on task color
+      this.selectedColor = this.data.taskData.color;
+      this.selectedPriority = this.data.taskData.priority;
     }
   }
 
@@ -48,14 +57,16 @@ export class FtsModalComponent {
       status: 'Rejected',
       description: this.taskDescription,
       sequence: 8,
-      color: this.selectedColor // Set the task color from selectedColor
+      color: this.selectedColor,
+      priority: this.selectedPriority
     };
 
     if (!this.data.isAdd && this.data.taskData) {
       newTask.id = this.data.taskData.id;
       newTask.status = this.data.taskData.status;
       newTask.sequence = this.data.taskData.sequence;
-      newTask.color = this.selectedColor; // Update task color from selectedColor
+      newTask.color = this.selectedColor;
+      newTask.priority = this.selectedPriority;
     }
 
     const existingTasksString = localStorage.getItem('tasks');
@@ -80,8 +91,42 @@ export class FtsModalComponent {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
+  togglePriorityDropdown() {
+    this.isPriorityDropdownOpen = !this.isPriorityDropdownOpen;
+  }
+
   selectColor(color: string) {
-    this.selectedColor = color; // Update the selected color
+    this.selectedColor = color;
     this.isDropdownOpen = false;
+  }
+
+  selectPriority(priority: number) {
+    this.selectedPriority = priority;
+    this.isPriorityDropdownOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    // Check if the click is outside of both dropdowns
+    const target = event.target as HTMLElement;
+    const className = target.className;
+    if (className.includes("color-dropdown-btn")) {
+      this.isPriorityDropdownOpen = false;
+      return;
+    }
+    if (className.includes("priority-dropdown-btn")) {
+      this.isDropdownOpen = false;
+      return;
+    }
+    const dropdownElement = this.elementRef.nativeElement.querySelector('.fts-dropdown-item');
+    const priorityDropdownElement = this.elementRef.nativeElement.querySelector('.fts-dropdown-item');
+
+    if (
+      !dropdownElement.contains(event.target) ||
+      !priorityDropdownElement.contains(event.target)
+    ) {
+      this.isDropdownOpen = false;
+      this.isPriorityDropdownOpen = false;
+    }
   }
 }

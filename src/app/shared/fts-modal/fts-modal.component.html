@@ -19,27 +19,58 @@
                         [(ngModel)]="taskDescription"></textarea>
                 </div>
             </div>
-            <div class="fts-dropdown">
-                <button class="fts-dropdown-button" (click)="toggleDropdown()">
-                    {{ selectedColor ? selectedColor : 'Select Color' }} <i class="fa fa-caret-down"></i>
-                </button>
-                <ul class="fts-dropdown-menu" [class.show]="isDropdownOpen">
-                    <li class="fts-dropdown-item" (click)="selectColor('purple')"
-                        [class.selected]="selectedColor === 'purple'">
-                        <i class="fas fa-circle color-purple"></i> Purple
-                    </li>
-                    <li class="fts-dropdown-item" (click)="selectColor('yellow')"
-                        [class.selected]="selectedColor === 'yellow'">
-                        <i class="fas fa-circle color-yellow"></i> Yellow
-                    </li>
-                    <li class="fts-dropdown-item" (click)="selectColor('pink')"
-                        [class.selected]="selectedColor === 'pink'">
-                        <i class="fas fa-circle color-pink"></i> Pink
-                    </li>
-                </ul>
+
+            <div class="fts-flex-container">
+
+                <!-- Color Dropdown -->
+                <div class="fts-dropdown">
+                    <button class="fts-dropdown-button color-dropdown-btn" (click)="toggleDropdown()">
+                        <i class="fas fa-circle color-dropdown-btn" [style.color]="colorBackgroundMap[selectedColor]"></i>
+                        {{ selectedColor ? selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1) : 'Select
+                        Color'
+                        }}
+                        <i class="fa fa-caret-down color-dropdown-btn" ></i>
+                    </button>
+                    <ul class="fts-dropdown-menu" [class.show]="isDropdownOpen">
+                        <li class="fts-dropdown-item" (click)="selectColor('purple')"
+                            [class.selected]="selectedColor === 'purple'">
+                            <i class="fas fa-circle color-purple"></i> Purple
+                        </li>
+                        <li class="fts-dropdown-item" (click)="selectColor('yellow')"
+                            [class.selected]="selectedColor === 'yellow'">
+                            <i class="fas fa-circle color-yellow"></i> Yellow
+                        </li>
+                        <li class="fts-dropdown-item" (click)="selectColor('pink')"
+                            [class.selected]="selectedColor === 'pink'">
+                            <i class="fas fa-circle color-pink"></i> Pink
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Priority Dropdown -->
+                <div class="fts-dropdown">
+                    <button class="fts-dropdown-button priority-dropdown-btn" (click)="togglePriorityDropdown()">
+                        <i class="fas fa-flag priority-dropdown-btn" [style.color]="priorityColorMap[selectedPriority]"></i>
+                        {{ selectedPriority ? 'Priority ' + selectedPriority : 'Select Priority' }} <i
+                            class="fa fa-caret-down priority-dropdown-btn"></i>
+                    </button>
+                    <ul class="fts-dropdown-menu" [class.show]="isPriorityDropdownOpen">
+                        <li class="fts-dropdown-item" (click)="selectPriority(1)"
+                            [class.selected]="selectedPriority === 1">
+                            <i class="fas fa-flag color-green"></i> Priority 1
+                        </li>
+                        <li class="fts-dropdown-item" (click)="selectPriority(2)"
+                            [class.selected]="selectedPriority === 2">
+                            <i class="fas fa-flag color-yellow"></i> Priority 2
+                        </li>
+                        <li class="fts-dropdown-item" (click)="selectPriority(3)"
+                            [class.selected]="selectedPriority === 3">
+                            <i class="fas fa-flag color-red"></i> Priority 3
+                        </li>
+                    </ul>
+                </div>
+
             </div>
-
-
         </div>
         <div class="modal-footer">
             <button class="close-button modal-button" (click)="closeModal($event)">Cancel</button>

@@ -151,19 +151,26 @@ $secondary-color: #0056b3;
 .fts-dropdown {
     position: relative;
     margin-bottom: 10px;
+    width: 140px;
 }
 
 .fts-dropdown-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
     background: #fff;
-    font-weight: bold;
+    transition: background-color 0.3s;
+    z-index: 100;
+}
+
+.fts-dropdown-button:hover {
+    background-color: #f3f3f3;
+    /* Change the background color on hover */
 }
 
 .fts-dropdown-menu {
@@ -196,6 +203,15 @@ $secondary-color: #0056b3;
 }
 
 /* Color Classes */
+.color-red {
+    color: #FF7878;
+}
+
+.color-green {
+    color: #B6E2A1;
+    opacity: 0.8;
+}
+
 .color-purple {
     color: #9c33d9;
     opacity: 0.8;
@@ -209,4 +225,23 @@ $secondary-color: #0056b3;
 .color-pink {
     color: #d83fcb;
     opacity: 0.8;
+}
+
+//dropdown placing
+
+.fts-flex-container {
+    display: flex;
+    justify-content: left;
+}
+
+.fts-dropdown {
+    margin-right: 10px;
+    /* Adjust margin as needed */
+    padding: 5px;
+    /* Adjust padding as needed */
+}
+
+.fts-dropdown:last-child {
+    margin-right: 0;
+    /* Remove margin from the last dropdown */
 }
