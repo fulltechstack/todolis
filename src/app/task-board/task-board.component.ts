@@ -9,16 +9,16 @@ import { FtsModalService } from '../shared/fts-modal.service';
 export class TaskBoardComponent {
 
   tasks = [
-    { id: 'task1', name: 'Call Sam For payments', status: 'Rejected', description: 'Bob', color: 'bg-yellow' },
-    { id: 'task2', name: 'Make payment to Bluedart', status: 'New', description: 'Johnny', color: 'bg-purple' },
-    { id: 'task3', name: 'Office rent', status: 'In Progress', description: 'Samino!', color: 'bg-pink' },
-    { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', color: 'bg-yellow' },
-    { id: 'task5', name: 'Ask for Lunch to Clients', status: 'In Progress', description: 'Office Admin', color: 'bg-pink' },
-    { id: 'task6', name: 'Client Meeting at 11 AM', status: 'Pending', description: 'CEO', color: 'bg-yellow' },
-    { id: 'task1', name: 'Call Sam For payments', status: 'Rejected', description: 'Bob', color: 'bg-yellow' },
-    { id: 'task2', name: 'Make payment to Bluedart', status: 'New', description: 'Johnny', color: 'bg-purple' },
-    { id: 'task3', name: 'Office rent', status: 'In Progress', description: 'Samino!', color: 'bg-pink' },
-    { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', color: 'bg-yellow' },
+    { id: 'task1', name: 'Call Sam For payments', status: 'Rejected', description: 'Bob', sequence: 1, color: 'bg-yellow' },
+    { id: 'task2', name: 'Make payment to Bluedart', status: 'New', description: 'Johnny', sequence: 2, color: 'bg-purple' },
+    { id: 'task3', name: 'Office rent', status: 'In Progress', description: 'Samino!', sequence: 3, color: 'bg-pink' },
+    { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', sequence: 4, color: 'bg-yellow' },
+    { id: 'task5', name: 'Ask for Lunch to Clients', status: 'In Progress', description: 'Office Admin', sequence: 5, color: 'bg-pink' },
+    { id: 'task6', name: 'Client Meeting at 11 AM', status: 'Pending', description: 'CEO', sequence: 6, color: 'bg-yellow' },
+    { id: 'task1', name: 'Call Sam For payments', status: 'Rejected', description: 'Bob', sequence: 7, color: 'bg-yellow' },
+    { id: 'task2', name: 'Make payment to Bluedart', status: 'New', description: 'Johnny', sequence: 8, color: 'bg-purple' },
+    { id: 'task3', name: 'Office rent', status: 'In Progress', description: 'Samino!', sequence: 9, color: 'bg-pink' },
+    { id: 'task4', name: 'Office grocery shopping', status: 'Completed', description: 'Tida', sequence: 10, color: 'bg-yellow' },
   ];
 
   ngOnInit() {

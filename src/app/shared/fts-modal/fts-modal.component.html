@@ -6,9 +6,10 @@
         </div>
         <div class="modal-content">
             <div *ngIf="data.isAdd" class="input-section">
-                <input type="text" class="borderless-input tname" placeholder="Task name">
+                <input type="text" class="borderless-input tname" placeholder="Task name" [(ngModel)]="taskName">
                 <div class="scrollable-container">
-                    <textarea class="custom-scrollbar" placeholder="Description"></textarea>
+                    <textarea class="custom-scrollbar" placeholder="Description"
+                        [(ngModel)]="taskDescription"></textarea>
                 </div>
             </div>
             <div *ngIf="!data.isAdd" class="display-section">

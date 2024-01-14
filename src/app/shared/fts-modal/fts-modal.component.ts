@@ -33,64 +33,48 @@ export class FtsModalComponent {
     }
   }
 
-  // save() {
-  //   // Create a task object with the data
-  //   const task = {
-  //     id: 'task1',
-  //     name: this.taskName,
-  //     status: 'Rejected',
-  //     description: this.taskDescription,
-  //     color: 'bg-yellow'
-  //   }
-
-  //   // Get existing tasks from localStorage (if any)
-  //   const existingTasksString = localStorage.getItem('tasks');
-  //   const existingTasks = existingTasksString ? JSON.parse(existingTasksString) : [];
-
-  //   // Add the new task to the existing tasks array
-  //   existingTasks.push(task);
-
-  //   // Save the updated tasks array back to localStorage
-  //   localStorage.setItem('tasks', JSON.stringify(existingTasks));
-
-  //   // Close the modal or perform any other action as needed
-  //   this.ftsModalService.closeModal();
-  // }
-
   save() {
-    const task = {
+    // Create a new task object based on the form data
+    const newTask: Task = {
       id: 'taskName' + Math.random(),
       name: this.taskName,
       status: 'Rejected',
       description: this.taskDescription,
+      sequence: 8,
       color: 'bg-yellow'
     };
 
-    let existingTasks = [];
-
-    const existingTasksString = localStorage.getItem('tasks');
-    if (existingTasksString) {
-      existingTasks = JSON.parse(existingTasksString);
-
-      if (!this.data.isAdd && this.data.taskData) {
-        // If it's an edit operation, find and update the existing task
-        const index = existingTasks.findIndex((t: Task) => t.id === this.data.taskData.id);
-        if (index !== -1) {
-          existingTasks[index] = { ...existingTasks[index], ...task };
-        }
-      } else {
-        // If it's not an edit operation, generate a new ID and add the task
-        task.id = 'task' + (existingTasks.length + 1);
-        existingTasks.push(task);
-      }
-
-      // Save the updated tasks array back to localStorage
-      localStorage.setItem('tasks', JSON.stringify(existingTasks));
+    // If it's an edit operation, update the newTask with existing data
+    if (!this.data.isAdd && this.data.taskData) {
+      newTask.id = this.data.taskData.id;
+      newTask.status = this.data.taskData.status;
+      newTask.sequence = this.data.taskData.sequence;
+      newTask.color = this.data.taskData.color;
     }
+
+    // Get existing tasks from localStorage (if any)
+    const existingTasksString = localStorage.getItem('tasks');
+    let existingTasks: Task[] = existingTasksString ? JSON.parse(existingTasksString) : [];
+
+    if (!this.data.isAdd && this.data.taskData) {
+      // If it's an edit operation, find and update the existing task
+      const existingIndex = existingTasks.findIndex((t: Task) => t.id === newTask.id);
+      if (existingIndex !== -1) {
+        existingTasks[existingIndex] = { ...existingTasks[existingIndex], ...newTask };
+      }
+    } else {
+      // If it's not an edit operation, generate a new sequence and add the task
+      newTask.sequence = existingTasks.length + 1;
+      existingTasks.push(newTask);
+    }
+
+    // Save the updated tasks array back to localStorage
+    localStorage.setItem('tasks', JSON.stringify(existingTasks));
 
     // Close the modal or perform any other action as needed
     this.ftsModalService.closeModal();
   }
+
 
 }
 
@@ -100,4 +84,5 @@ export interface Task {
   status: string;
   description: string;
   color: string;
+  sequence: number;
 }
