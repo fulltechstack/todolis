@@ -45,7 +45,7 @@
     // padding: 0.5rem 1rem;
     padding: 20px 24px;
     margin-bottom: -1px;
-    background-color: #fff;
+    background-color: #fafaf8;
     border: 1px solid rgba(0, 0, 0, 0.125);
     font-size: 15px;
 }
@@ -295,4 +295,18 @@
 .scrollable-container::-ms-scrollbar-track {
     background-color: transparent;
     /* Change the track background color as desired */
+}
+
+// draggable task css
+
+.dragging {
+    box-shadow: 0px 4px 10px #FCDDB0;
+    cursor: pointer !important;
+}
+
+.drag-over {
+    border-top: 2px solid #B6E2A1;
+    margin: 10px 0px 10px 0px;
+    opacity: 1;
+    /* Adjust color and style as needed */
 }

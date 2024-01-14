@@ -9,9 +9,12 @@
             <div class="scrollable-container">
                 <div class="custom-scrollbar">
                     <ul class=" list-group list-group-flush">
-                        <li draggable="true" [draggable]="true" (dragstart)="handleDragStart(i)"
-                            (dragover)="handleDragOver(i)" (dragend)="handleDragEnd()" class="list-group-item"
-                            *ngFor="let task of tasks;let i = index">
+                        <li draggable="true" [ngClass]="{
+                            'drag-over': i === draggedOverIndex,
+                            'dragging': i === draggedIndex
+                        }" [draggable]="true" (dragstart)="handleDragStart(i,$event,dragItem)"
+                            (dragover)="handleDragOver(i,$event,dragItem)" (dragend)="handleDragEnd()" #dragItem
+                            class="list-group-item" *ngFor="let task of tasks;let i = index">
                             <div [ngClass]="task.color + ' todo-indicator'"></div>
                             <div class="widget-content p-0">
                                 <div class="widget-content-wrapper">

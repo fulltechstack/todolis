@@ -24,6 +24,7 @@ export class TaskBoardComponent {
   ];
 
   draggedIndex: number | null = null;
+  draggedOverIndex: number | null = null;
 
   private taskUpdatedSubscription: Subscription;
 
@@ -93,11 +94,18 @@ export class TaskBoardComponent {
     this.tasks = existingTasks;
   }
 
-  handleDragStart(index: number) {
+  handleDragStart(index: number, event: DragEvent, dragElement: HTMLElement) {
     this.draggedIndex = index;
+    const invisibleClone = dragElement.cloneNode(true) as HTMLElement;
+    invisibleClone.style.opacity = '0';
+    document.body.appendChild(invisibleClone);
+    event.dataTransfer?.setDragImage(invisibleClone, 0, 0);
+    setTimeout(() => {
+      document.body.removeChild(invisibleClone);
+    }, 0);
   }
 
-  handleDragOver(index: number) {
+  handleDragOver(index: number, event: DragEvent, dragElement: HTMLElement) {
     if (this.draggedIndex === null) return;
 
     const updatedTasks = [...this.tasks];
@@ -114,13 +122,16 @@ export class TaskBoardComponent {
 
     this.tasks = updatedTasks;
     this.draggedIndex = index;
+    this.draggedOverIndex = index;
 
+    // Prevent the default behavior of dragover
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
-    this.ftsModalService.notifyTaskUpdated();
   }
 
   handleDragEnd() {
     this.draggedIndex = null;
+    this.draggedOverIndex = null;
+    this.ftsModalService.notifyTaskUpdated();
   }
 
 }
