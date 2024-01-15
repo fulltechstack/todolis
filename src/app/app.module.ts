@@ -8,13 +8,15 @@ import { TaskBoardComponent } from './task-board/task-board.component';
 import { FtsModalComponent } from './shared/fts-modal/fts-modal.component';
 import { FormsModule } from '@angular/forms';
 import { FtsModalService } from './shared/fts-modal.service';
+import { TruncateWordsPipe } from './shared/pipes/truncate-words.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     TaskBoardComponent,
-    FtsModalComponent
+    FtsModalComponent,
+    TruncateWordsPipe
   ],
   imports: [
     BrowserModule,

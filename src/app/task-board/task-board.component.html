@@ -30,10 +30,11 @@
                                             </div>
                                         </div>
                                         <div class="widget-content-left task-name-desc">
-                                            <div class="widget-heading">{{ task.name }}
+                                            <div class="widget-heading">{{ task.name | truncateWords:30 }}
                                                 <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
                                             </div>
-                                            <div class="widget-subheading"><i> {{ task.description }}</i></div>
+                                            <div class="widget-subheading"><i> {{ task.description| truncateWords:30
+                                                    }}</i></div>
                                         </div>
                                         <div class="widget-content-right">
                                             <button class="border-0 btn-transition btn btn-outline-success"
