@@ -1,10 +1,15 @@
 {
     "manifest_version": 2,
-    "name": "Angular Chrome Extension",
+    "name": "DoThis",
     "version": "1.0",
-    "description": "A Chrome extension built with Angular",
+    "description": "Work-life balance made easy with DoThis for Chrome.",
     "browser_action": {
-        "default_popup": "index.html"
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "icon16.png",  
+            "48": "icon48.png",  
+            "128": "icon128.png" 
+        }
     },
     "permissions": [
         "activeTab",
