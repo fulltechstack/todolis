@@ -316,8 +316,9 @@
 }
 
 // checkbox 
+/* Add this CSS to your stylesheet */
 
-//* Add this CSS to your stylesheet */
+/* Checkbox styles */
 .custom-checkbox input[type="checkbox"] {
     -webkit-appearance: none;
     /* Remove default checkbox appearance */
@@ -335,12 +336,26 @@
     cursor: pointer;
     background-color: #fff;
     /* Add a background color */
+    position: relative;
+    /* Position for pseudo-element */
 }
 
 /* Customize the checkbox appearance when checked */
 .custom-checkbox input[type="checkbox"]:checked {
-    background-color: #3498db;
-    /* Change background color when checked */
-    border-color: #3498db;
-    /* Change border color when checked */
+    transform: scale(1.1); /* Scale up the checkbox when checked */
+}
+
+/* Add tick icon inside the checkbox on hover */
+.custom-checkbox input[type="checkbox"]:hover::before {
+    content: "\2714";
+    /* Unicode character for a checkmark */
+    color: rgba(255, 255, 255, 0.4); /* Color of the checkmark with decreased opacity */
+    font-size: 12px;
+    /* Adjust the font size as needed */
+    color: #fdf5f5;
+    /* Color of the checkmark */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -9,43 +9,46 @@
             <div class="scrollable-container">
                 <div class="custom-scrollbar">
                     <ul class=" list-group list-group-flush">
-                        <li draggable="true" [ngClass]="{
+                        <ng-container *ngFor="let task of tasks; let i = index">
+                            <li draggable="true" [ngClass]="{
                             'drag-over': i === draggedOverIndex,
                             'dragging': i === draggedIndex
-                        }" [draggable]="true" (dragstart)="handleDragStart(i,$event,dragItem)"
-                            (dragover)="handleDragOver(i,$event,dragItem)" (dragend)="handleDragEnd()" #dragItem
-                            class="list-group-item" *ngFor="let task of tasks;let i = index"
-                            [style.backgroundColor]="getColorBackground(task.color)">
-                            <!-- <div [ngClass]="task.color + ' todo-indicator'"></div> -->
-                            <div class="widget-content p-0">
-                                <div class="widget-content-wrapper">
-                                    <div class="widget-content-left mr-2">
-                                        <div class="custom-checkbox custom-control">
-                                            <input class="custom-control-input" [id]="'customCheckbox-' + task.id"
-                                                type="checkbox" [style.border-color]="getBorderColor(task.priority)" />
-                                            <label class="custom-control-label"
-                                                [for]="'customCheckbox-' + task.id">&nbsp;</label>
+                          }" [draggable]="true" (dragstart)="handleDragStart(i,$event,dragItem)"
+                                (dragover)="handleDragOver(i,$event,dragItem)" (dragend)="handleDragEnd()" #dragItem
+                                class="list-group-item" [style.backgroundColor]="getColorBackground(task.color)"
+                                *ngIf="!task.isComplete">
+                                <!-- <div [ngClass]="task.color + ' todo-indicator'"></div> -->
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-2">
+                                            <div class="custom-checkbox custom-control">
+                                                <input class="custom-control-input" [id]="'customCheckbox-' + task.id"
+                                                    type="checkbox" (change)="completeTask(task)"
+                                                    [style.border-color]="getBorderColor(task.priority)" />
+                                                <label class="custom-control-label"
+                                                    [for]="'customCheckbox-' + task.id">&nbsp;</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="widget-content-left task-name-desc">
-                                        <div class="widget-heading">{{ task.name }}
-                                            <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
+                                        <div class="widget-content-left task-name-desc">
+                                            <div class="widget-heading">{{ task.name }}
+                                                <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
+                                            </div>
+                                            <div class="widget-subheading"><i> {{ task.description }}</i></div>
                                         </div>
-                                        <div class="widget-subheading"><i> {{ task.description }}</i></div>
-                                    </div>
-                                    <div class="widget-content-right">
-                                        <button class="border-0 btn-transition btn btn-outline-success"
-                                            (click)="editTask(task)">
-                                            <i class="fa fa-pencil"></i>
-                                        </button>
-                                        <button class="border-0 btn-transition btn btn-outline-danger"
-                                            (click)="deleteTask(task)">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
+                                        <div class="widget-content-right">
+                                            <button class="border-0 btn-transition btn btn-outline-success"
+                                                (click)="editTask(task)">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                            <button class="border-0 btn-transition btn btn-outline-danger"
+                                                (click)="deleteTask(task)">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        </ng-container>
                     </ul>
                 </div>
             </div>

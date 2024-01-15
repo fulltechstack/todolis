@@ -6,4 +6,5 @@ export interface Task {
     color: string;
     sequence: number;
     priority: number;
+    isComplete: boolean;
 }

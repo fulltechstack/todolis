@@ -11,9 +11,9 @@ import { Subscription } from 'rxjs';
 export class TaskBoardComponent {
 
   tasks = [
-    { id: 'task1', name: 'Sample task 1', status: 'Rejected', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2 },
-    { id: 'task2', name: 'Sample task 2', status: 'New', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1 },
-    { id: 'task3', name: 'Sample task 3', status: 'In Progress', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3 },
+    { id: 'task1', name: 'Sample task 1', status: 'Rejected', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: false },
+    { id: 'task2', name: 'Sample task 2', status: 'New', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: false },
+    { id: 'task3', name: 'Sample task 3', status: 'In Progress', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3, isComplete: true },
   ];
 
   priorityColorMap: { [key: string]: string } = {
@@ -90,6 +90,12 @@ export class TaskBoardComponent {
     }
   }
 
+  completeTask(task: Task) {
+    task.isComplete = true;
+    this.updateTaskInLocalStorage(task);
+    this.ftsModalService.notifyTaskUpdated();
+  }
+
   private updateTasks() {
     // Retrieve tasks from local storage
     const existingTasksString = localStorage.getItem('tasks');
@@ -97,6 +103,26 @@ export class TaskBoardComponent {
 
     // Update the tasks array
     this.tasks = existingTasks;
+  }
+
+  private updateTaskInLocalStorage(task: Task) {
+    // Get existing tasks from localStorage (if any)
+    const existingTasksString = localStorage.getItem('tasks');
+    let existingTasks: Task[] = existingTasksString ? JSON.parse(existingTasksString) : [];
+
+    // Find the index of the task to update
+    const taskIndex = existingTasks.findIndex((t: Task) => t.id === task.id);
+
+    if (taskIndex !== -1) {
+      // Update the task in the existing tasks array
+      existingTasks[taskIndex] = task;
+
+      // Save the updated tasks array back to localStorage
+      localStorage.setItem('tasks', JSON.stringify(existingTasks));
+
+      // Optionally, you can update the tasks property used in your component
+      this.tasks = existingTasks;
+    }
   }
 
   getBorderColor(priority: number): string {

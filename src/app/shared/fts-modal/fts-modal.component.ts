@@ -58,7 +58,8 @@ export class FtsModalComponent {
       description: this.taskDescription,
       sequence: 8,
       color: this.selectedColor,
-      priority: this.selectedPriority
+      priority: this.selectedPriority,
+      isComplete: false
     };
 
     if (!this.data.isAdd && this.data.taskData) {
