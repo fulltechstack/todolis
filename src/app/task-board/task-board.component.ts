@@ -16,6 +16,18 @@ export class TaskBoardComponent {
     { id: 'task3', name: 'Sample task 3', status: 'In Progress', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3 },
   ];
 
+  priorityColorMap: { [key: string]: string } = {
+    1: '#B6E2A1',
+    2: '#F7B924',
+    3: '#FF7878'
+  };
+
+  colorBackgroundMap: { [key: string]: string } = {
+    purple: '#f8f0ff',
+    yellow: '#fffff5',
+    pink: '#fff8ff'
+  };
+
   draggedIndex: number | null = null;
   draggedOverIndex: number | null = null;
 
@@ -85,6 +97,16 @@ export class TaskBoardComponent {
 
     // Update the tasks array
     this.tasks = existingTasks;
+  }
+
+  getBorderColor(priority: number): string {
+    // Use the priorityColorMap to get the corresponding color for the priority
+    return this.priorityColorMap[priority.toString()] || '';
+  }
+
+  getColorBackground(color: string): string {
+    // Use the colorBackgroundMap to get the corresponding background color
+    return this.colorBackgroundMap[color] || '';
   }
 
   handleDragStart(index: number, event: DragEvent, dragElement: HTMLElement) {
