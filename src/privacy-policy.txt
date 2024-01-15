@@ -1,0 +1,46 @@
+Privacy Policy for DoThis Chrome Extension
+
+Effective Date: 16/01/2024
+
+1. Overview
+
+Welcome to DoThis, a Chrome extension designed to help you organize tasks and improve your work-life balance. This Privacy Policy explains how we collect, use, and protect your personal information. By using DoThis, you agree to the practices described in this policy.
+
+2. Data Collection
+
+User-Generated Content: DoThis allows you to create and manage to-do lists, tasks, and related content. Your data is stored locally within the extension to provide you with the task management functionality.
+
+Usage Data: We collect information about how you interact with the extension, such as when you create, edit, or delete tasks. This data helps us improve the user experience.
+
+3. Data Usage
+
+We use the collected data for the following purposes:
+
+To provide you with task management features and functionality.
+To enhance and personalize your experience with DoThis.
+To improve our extension's performance and features based on user feedback.
+4. Data Storage and Security
+
+Your data is stored locally within the extension and is not transmitted to our servers or third parties.
+We implement security measures to protect your data from unauthorized access.
+5. User Rights
+
+You have the right to access, modify, or delete your user-generated content within the extension. To do so, use the features provided by DoThis.
+
+6. Third-Party Services
+
+DoThis does not integrate with any third-party services or APIs, and we do not share your data with third parties.
+
+7. Cookies and Tracking
+
+DoThis does not use cookies or tracking technologies.
+
+8. Updates to Privacy Policy
+
+We may update this Privacy Policy to reflect changes in our practices. Any changes will be posted within the extension.
+
+9. Contact Information
+
+If you have any questions or concerns about our privacy practices, please contact us at [Your Contact Information].
+
+By using DoThis, you acknowledge that you have read and agree to this Privacy Policy. Please use DoThis in accordance with this policy.
