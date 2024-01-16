@@ -326,7 +326,8 @@
 
 /* Customize the checkbox appearance when checked */
 .custom-checkbox input[type="checkbox"]:checked {
-    transform: scale(1.2); /* Scale up the checkbox when checked */
+    transform: scale(1.2);
+    /* Scale up the checkbox when checked */
 }
 
 /* Add tick icon inside the checkbox on hover */
@@ -341,4 +342,31 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+// dropdown
+
+.card-header.custom-position {
+    display: flex;
+    /* Use flex container */
+    justify-content: space-between;
+    /* Distribute space between child elements */
+    align-items: center;
+}
+
+.custom-dropdown-button {
+    color: #E97777;
+    background-color: transparent;
+    border-style: none;
+}
+
+.custom-dropdown-button:hover {
+    background-color: transparent;
+    color: #E97777;
+    scale: (1.2);
+}
+
+.custom-dropdown-button::after {
+    display: none;
+    /* Hide the default down caret icon */
 }

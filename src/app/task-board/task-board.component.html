@@ -1,9 +1,18 @@
 <div class="row d-flex justify-content-center container">
     <div class="col-md-6">
         <div class="card-hover-shadow-2x card">
-            <div class="card-header-tab card-header">
+            <div class="card-header-tab card-header custom-position">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                     Tasks
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button"
+                        id="sortDropdownMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-sort"></i></button>
+                    <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
+                        <a class="dropdown-item" (click)="selectPriority(1)">High priority first</a>
+                        <a class="dropdown-item" (click)="selectPriority(2)">Low priority first</a>
+                    </div>
                 </div>
             </div>
             <div class="scrollable-container">
@@ -45,7 +54,6 @@
                                                 (click)="deleteTask(task)">
                                                 <i class="fa fa-trash"></i>
                                             </button>
-                                            u
                                         </div>
                                     </div>
                                 </div>

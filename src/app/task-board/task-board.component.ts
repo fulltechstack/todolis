@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class TaskBoardComponent {
 
+  selectedPriority: number = 1;
+
   tasks = [
     { id: 'task1', name: 'Sample task 1', status: 'Rejected', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: false },
     { id: 'task2', name: 'Sample task 2', status: 'New', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: false },
@@ -175,4 +177,18 @@ export class TaskBoardComponent {
     this.ftsModalService.notifyTaskUpdated();
   }
 
+  sortTasksByPriorityAscending() {
+    this.tasks.sort((a, b) => a.priority - b.priority);
+  }
+  sortTasksByPriorityDescending() {
+    this.tasks.sort((a, b) => b.priority - a.priority);
+  }
+
+  selectPriority(priority: number | null) {
+    if (priority === 1) {
+      this.sortTasksByPriorityDescending();
+    } else {
+      this.sortTasksByPriorityAscending();
+    }
+  }
 }
