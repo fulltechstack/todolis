@@ -370,3 +370,20 @@
     display: none;
     /* Hide the default down caret icon */
 }
+
+.dropdown-item {
+    color: #333;
+    font-size: 12px;
+}
+
+/* Change the hover effect on dropdown items */
+.dropdown-item:hover {
+    background-color: #f8f8f8;
+}
+
+/* Optionally, style the active (clicked) item */
+.dropdown-item:active {
+    background-color: #e0e0e0;
+    /* Change to your desired active item background color */
+    /* Add any other active item styles you want here */
+}

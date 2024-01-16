@@ -50,10 +50,17 @@
                                                 (click)="editTask(task)">
                                                 <i class="fa fa-pencil"></i>
                                             </button>
-                                            <button class="border-0 btn-transition btn fts-btn-outline-danger"
+                                            <!-- <button class="border-0 btn-transition btn fts-btn-outline-danger"
                                                 (click)="deleteTask(task)">
                                                 <i class="fa fa-trash"></i>
-                                            </button>
+                                            </button> -->
+                                            <button class="btn btn-secondary dropdown-toggle custom-dropdown-button"
+                                                type="button" id="sortDropdownMenu" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                            <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
+                                                <a class="dropdown-item" (click)="deleteTask(task)">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
