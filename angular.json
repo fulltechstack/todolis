@@ -101,7 +101,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/jquery.min.js",
+              "src/assets/scripts/bootstrap.min.js"
+            ]
           }
         }
       }
