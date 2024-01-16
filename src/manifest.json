@@ -3,19 +3,16 @@
     "name": "DoThis",
     "version": "1.0",
     "description": "Work-life balance made easy with DoThis for Chrome.",
-    "browser_action": {
+    "action": {
         "default_popup": "index.html",
         "default_icon": {
-            "16": "icon16.png",  
-            "48": "icon48.png",  
-            "128": "icon128.png" 
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
         }
     },
     "permissions": [
         "activeTab",
         "storage"
-    ],
-    "web_accessible_resources": [
-        "index.html"
     ]
 }
