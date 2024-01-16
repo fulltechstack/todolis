@@ -30,21 +30,22 @@
                                             </div>
                                         </div>
                                         <div class="widget-content-left task-name-desc">
-                                            <div class="widget-heading">{{ task.name | truncateWords:30 }}
+                                            <div class="widget-heading">{{ task.name | truncateWords:20 }}
                                                 <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
                                             </div>
-                                            <div class="widget-subheading"><i> {{ task.description| truncateWords:30
+                                            <div class="widget-subheading"><i> {{ task.description| truncateWords:20
                                                     }}</i></div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <button class="border-0 btn-transition btn btn-outline-success"
+                                            <button class="border-0 btn-transition btn fts-btn-outline-success"
                                                 (click)="editTask(task)">
                                                 <i class="fa fa-pencil"></i>
                                             </button>
-                                            <button class="border-0 btn-transition btn btn-outline-danger"
+                                            <button class="border-0 btn-transition btn fts-btn-outline-danger"
                                                 (click)="deleteTask(task)">
                                                 <i class="fa fa-trash"></i>
                                             </button>
+                                            u
                                         </div>
                                     </div>
                                 </div>

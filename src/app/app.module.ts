@@ -9,6 +9,7 @@ import { FtsModalComponent } from './shared/fts-modal/fts-modal.component';
 import { FormsModule } from '@angular/forms';
 import { FtsModalService } from './shared/fts-modal.service';
 import { TruncateWordsPipe } from './shared/pipes/truncate-words.pipe';
+import { CompletedTasksBoardComponent } from './completed-tasks-board/completed-tasks-board.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TruncateWordsPipe } from './shared/pipes/truncate-words.pipe';
     SidebarComponent,
     TaskBoardComponent,
     FtsModalComponent,
-    TruncateWordsPipe
+    TruncateWordsPipe,
+    CompletedTasksBoardComponent
   ],
   imports: [
     BrowserModule,

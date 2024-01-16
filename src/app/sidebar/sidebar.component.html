@@ -1,6 +1,6 @@
 <div class="sidebar" [class.collapsed]="sidebarCollapsed">
-    <a href="#"><i class="fas fa-tasks"></i><span class="link-text">Dashboard</span></a>
-    <!-- <a href="#"><i class="fas fa-check"></i><span class="link-text">Completed tasks</span></a> -->
+    <a routerLink="/dashboard"><i class="fas fa-tasks"></i><span class="link-text">Dashboard</span></a>
+    <a routerLink="/completed-tasks"><i class="fas fa-check"></i><span class="link-text">Completed tasks</span></a>
     <!-- <a href="#"><i class="fas fa-clock-rotate-left"></i><span class="link-text">Completed tasks</span></a> -->
     <!-- <a href="#"><i class="fas fa-address-book"></i><span class="link-text">History</span></a>
     <a href="#"><i class="fas fa-address-book"></i><span class="link-text">Contact</span></a> -->
@@ -12,6 +12,7 @@
 </div>
 <div class="main-content">
     <!-- <h3 class="dashboard-heading">todo-lis</h3> -->
+    <!-- <router-outlet></router-outlet> -->
     <app-task-board></app-task-board>
     <!-- Your content here -->
 </div>

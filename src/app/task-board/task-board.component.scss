@@ -43,7 +43,7 @@
     position: relative;
     display: block;
     // padding: 0.5rem 1rem;
-    padding: 20px 12px;
+    padding: 10px 12px;
     margin-bottom: -1px;
     background-color: #fafaf8;
     border: 1px solid rgba(0, 0, 0, 0.125);
@@ -120,38 +120,22 @@
     transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
 
-.btn-outline-success {
+.fts-btn-outline-success {
     color: #6E85B7;
     border-color: #6E85B7;
 }
 
-.btn-outline-success:hover {
-    color: #fff;
-    background-color: #6E85B7;
-    border-color: #6E85B7;
+.fts-btn-outline-success:hover {
+    scale: (1.2);
 }
 
-.btn-outline-success:hover {
-    color: #fff;
-    background-color: #6E85B7;
-    border-color: #6E85B7;
-}
-
-.btn-outline-danger {
+.fts-btn-outline-danger {
     color: #E97777;
     border-color: #E97777;
 }
 
-.btn-outline-danger:hover {
-    color: #fff;
-    background-color: #E97777;
-    border-color: #E97777;
-}
-
-.btn-outline-danger:hover {
-    color: #fff;
-    background-color: #E97777;
-    border-color: #E97777;
+.fts-btn-outline-danger:hover {
+    scale: (1.2);
 }
 
 .btn-primary {
@@ -195,7 +179,7 @@
     height: 95%;
     border: none;
     outline: none;
-    padding: 5px;
+    padding: 0px;
     resize: none;
     background-color: transparent;
     font-size: 14px;
@@ -342,14 +326,13 @@
 
 /* Customize the checkbox appearance when checked */
 .custom-checkbox input[type="checkbox"]:checked {
-    transform: scale(1.1); /* Scale up the checkbox when checked */
+    transform: scale(1.2); /* Scale up the checkbox when checked */
 }
 
 /* Add tick icon inside the checkbox on hover */
 .custom-checkbox input[type="checkbox"]:hover::before {
     content: "\2714";
     /* Unicode character for a checkmark */
-    color: rgba(255, 255, 255, 0.4); /* Color of the checkmark with decreased opacity */
     font-size: 12px;
     /* Adjust the font size as needed */
     color: #fdf5f5;
