@@ -13,9 +13,9 @@ export class TaskBoardComponent {
   selectedPriority: number = 1;
 
   tasks = [
-    { id: 'task1', name: 'Sample task 1', status: 'Rejected', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: true },
-    { id: 'task2', name: 'Sample task 2', status: 'New', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: true },
-    { id: 'task3', name: 'Sample task 3', status: 'In Progress', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3, isComplete: true },
+    { id: 'task1', name: 'Sample task 1', duedate: '08-02-2024', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: true },
+    { id: 'task2', name: 'Sample task 2', duedate: '08-03-2024', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: true },
+    { id: 'task3', name: 'Sample task 3', duedate: '08-04-2024', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3, isComplete: true },
   ];
 
   priorityColorMap: { [key: string]: string } = {

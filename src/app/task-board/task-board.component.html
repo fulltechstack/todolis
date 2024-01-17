@@ -41,10 +41,10 @@
                                         </div>
                                         <div class="widget-content-left task-name-desc">
                                             <div class="widget-heading">{{ task.name | truncateWords:20 }}
-                                                <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
                                             </div>
                                             <div class="widget-subheading"><i> {{ task.description| truncateWords:20
                                                     }}</i></div>
+                                            <div class="task-pills badge">{{ task.duedate }}</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <button class="border-0 btn-transition btn fts-btn-outline-success"

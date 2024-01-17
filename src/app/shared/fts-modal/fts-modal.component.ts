@@ -12,7 +12,7 @@ export class FtsModalComponent {
   taskName: string = '';
   taskDescription: string = '';
 
-  selectedDate!: '';
+  selectedDate!: string;
   selectedColor: string = 'yellow';
   selectedPriority: number = 1;
   isDropdownOpen: boolean = false;
@@ -42,6 +42,12 @@ export class FtsModalComponent {
       this.selectedColor = this.data.taskData.color;
       this.selectedPriority = this.data.taskData.priority;
     }
+    // Set the selectedDate to today's date
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Add 1 to month because it's zero-based
+    const day = currentDate.getDate().toString().padStart(2, '0');
+    this.selectedDate = this.data?.taskData?.duedate || `${year}-${month}-${day}`;
   }
 
   closeModal(event: MouseEvent): void {
@@ -55,7 +61,7 @@ export class FtsModalComponent {
     const newTask: Task = {
       id: 'taskName' + Math.random(),
       name: this.taskName,
-      status: 'Rejected',
+      duedate: this.selectedDate,
       description: this.taskDescription,
       sequence: 1, // Set the sequence for new tasks to 1
       color: this.selectedColor,
@@ -65,7 +71,7 @@ export class FtsModalComponent {
 
     if (!this.data.isAdd && this.data.taskData) {
       newTask.id = this.data.taskData.id;
-      newTask.status = this.data.taskData.status;
+      newTask.duedate = this.data.taskData.duedate;
       newTask.sequence = this.data.taskData.sequence;
       newTask.color = this.selectedColor;
       newTask.priority = this.selectedPriority;
@@ -134,6 +140,13 @@ export class FtsModalComponent {
     ) {
       this.isDropdownOpen = false;
       this.isPriorityDropdownOpen = false;
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.ftsModalService.closeModal();
     }
   }
 }

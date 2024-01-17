@@ -1,7 +1,7 @@
 export interface Task {
     id: string;
     name: string;
-    status: string;
+    duedate: string;
     description: string;
     color: string;
     sequence: number;
