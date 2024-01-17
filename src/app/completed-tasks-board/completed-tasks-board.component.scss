@@ -1,0 +1,383 @@
+.card {
+    border-width: 0;
+    transition: all .2s;
+}
+
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    border-bottom-width: 1px;
+    padding: 0.375rem 0.625rem;
+    height: 3rem;
+    background-color: #fff;
+}
+
+.widget-subheading {
+    color: #858a8e;
+    font-size: 11px;
+}
+
+.card-header.card-header-tab .card-header-title {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: bold;
+    color: #756AB6;
+}
+
+.btn-actions-pane-right {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.text-capitalize {
+    text-transform: capitalize !important;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    // padding: 0.5rem 1rem;
+    padding: 10px 12px;
+    margin-bottom: -1px;
+    background-color: #fafaf8;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    font-size: 15px;
+}
+
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.todo-indicator {
+    position: absolute;
+    width: 4px;
+    height: 60%;
+    border-radius: 0.3rem;
+    left: 0.625rem;
+    top: 20%;
+    opacity: .6;
+    transition: opacity .2s;
+}
+
+.yellow {
+    background-color: #f7b924 !important;
+}
+
+.pink {
+    background-color: #d83fcb;
+}
+
+.purple {
+    background-color: #9c33d9;
+}
+
+.widget-content {
+    // padding: 1rem;
+    padding: 1px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.widget-content .widget-content-wrapper {
+    display: flex;
+    flex: 1;
+    position: relative;
+    align-items: center;
+}
+
+.task-name-desc {
+    margin-left: 10px;
+}
+
+.widget-content .widget-content-right.widget-content-actions {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.widget-content .widget-content-right {
+    margin-left: auto;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn {
+    padding: 0.2rem 0.4rem;
+    margin: 0px 4px;
+    font-size: 12px;
+    position: relative;
+    transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.fts-btn-outline-success {
+    color: #6E85B7;
+    border-color: #6E85B7;
+}
+
+.fts-btn-outline-success:hover {
+    scale: (1.2);
+}
+
+.fts-btn-outline-danger {
+    color: #E97777;
+    border-color: #E97777;
+}
+
+.fts-btn-outline-danger:hover {
+    scale: (1.2);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #3f6ad8;
+    border-color: #3f6ad8;
+}
+
+
+
+.card-footer {
+    background-color: #fff;
+}
+
+.add-task-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px;
+    color: #756AB6;
+    text-decoration: none;
+    font-size: 16px;
+
+    .fas.fa-plus {
+        background-color: #756AB6;
+        border-radius: 48%;
+        padding: 3px;
+        margin-right: 5px;
+        color: #FAF3F0;
+    }
+}
+
+.scrollable-container {
+    height: 288px;
+    position: relative;
+    overflow: auto;
+}
+
+/* Custom Scrollbar Styles */
+.custom-scrollbar {
+    width: 100%;
+    height: 95%;
+    border: none;
+    outline: none;
+    padding: 0px;
+    resize: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #333;
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: #BFB29E transparent;
+    /* Firefox */
+
+    /* Webkit (Chrome, Safari) */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #BFB29E;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    /* Edge */
+    &::-ms-scrollbar-thumb {
+        background-color: #BFB29E;
+        border-radius: 4px;
+    }
+
+    &::-ms-scrollbar-track {
+        background-color: transparent;
+    }
+}
+
+/* Hide default scrollbar in WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+    /* Adjust the width as needed */
+    background-color: transparent;
+}
+
+/* Track in WebKit browsers */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Change the background color as desired */
+}
+
+/* Handle in WebKit browsers */
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Change the thumb color as desired */
+    border-radius: 5px;
+    /* Adjust the border radius as needed */
+}
+
+/* Handle hover in WebKit browsers */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Change the hover color as desired */
+}
+
+/* Firefox scrollbar styling */
+.scrollable-container {
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: #BFB29E transparent;
+    /* Firefox */
+
+    /* Adjust scrollbar width and color as needed */
+}
+
+/* Firefox scrollbar track */
+.scrollable-container::-webkit-scrollbar {
+    width: 10px;
+    /* Adjust the width as needed */
+}
+
+/* Firefox scrollbar thumb */
+.scrollable-container::-webkit-scrollbar-thumb {
+    background-color: #BFB29E;
+    /* Change the thumb color as desired */
+    border-radius: 5px;
+    /* Adjust the border radius as needed */
+}
+
+/* Firefox scrollbar track */
+.scrollable-container::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Change the track background color as desired */
+}
+
+/* Edge scrollbar styling */
+.scrollable-container::-ms-scrollbar-thumb {
+    background-color: #BFB29E;
+    /* Change the thumb color as desired */
+    border-radius: 5px;
+    /* Adjust the border radius as needed */
+}
+
+/* Edge scrollbar track */
+.scrollable-container::-ms-scrollbar-track {
+    background-color: transparent;
+    /* Change the track background color as desired */
+}
+
+// draggable task css
+
+.dragging {
+    box-shadow: 0px 4px 10px #FCDDB0;
+    cursor: pointer !important;
+}
+
+.drag-over {
+    border-top: 2px solid #B6E2A1;
+    margin: 10px 0px 10px 0px;
+    opacity: 1;
+    /* Adjust color and style as needed */
+}
+
+// checkbox 
+/* Add this CSS to your stylesheet */
+
+/* Checkbox styles */
+.custom-checkbox input[type="checkbox"] {
+    -webkit-appearance: none;
+    /* Remove default checkbox appearance */
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    /* Set the width and height to create a circular shape */
+    height: 20px;
+    border: 2px solid #3498db;
+    /* Add a border for the checkbox */
+    border-radius: 50%;
+    /* Make it circular */
+    outline: none;
+    /* Remove focus outline */
+    cursor: pointer;
+    background-color: #fff;
+    /* Add a background color */
+    position: relative;
+    /* Position for pseudo-element */
+}
+
+
+.custom-checkbox input[type="checkbox"]:checked::before {
+    content: "\2714";
+    /* Unicode character for a checkmark */
+    font-size: 12px;
+    /* Adjust the font size as needed */
+    color: #fdf5f5;
+    /* Color of the checkmark */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// dropdown
+
+.card-header.custom-position {
+    display: flex;
+    /* Use flex container */
+    justify-content: space-between;
+    /* Distribute space between child elements */
+    align-items: center;
+}
+
+.custom-dropdown-button {
+    color: #E97777;
+    background-color: transparent;
+    border-style: none;
+}
+
+.custom-dropdown-button:hover {
+    background-color: transparent;
+    color: #E97777;
+    scale: (1.2);
+}
+
+.custom-dropdown-button::after {
+    display: none;
+    /* Hide the default down caret icon */
+}
+
+.dropdown-item {
+    color: #333;
+    font-size: 12px;
+}
+
+/* Change the hover effect on dropdown items */
+.dropdown-item:hover {
+    background-color: #f8f8f8;
+}
+
+/* Optionally, style the active (clicked) item */
+.dropdown-item:active {
+    background-color: #e0e0e0;
+    /* Change to your desired active item background color */
+    /* Add any other active item styles you want here */
+}

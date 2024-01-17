@@ -1,1 +1,58 @@
-<p>completed-tasks-board works!</p>
+<div class="row d-flex justify-content-center container">
+    <div class="col-md-6">
+        <div class="card-hover-shadow-2x card">
+            <div class="card-header-tab card-header custom-position">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    Tasks
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button"
+                        id="sortDropdownMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-sort"></i></button>
+                    <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
+                        <a class="dropdown-item" (click)="selectPriority(1)">High priority first</a>
+                        <a class="dropdown-item" (click)="selectPriority(2)">Low priority first</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scrollable-container">
+                <div class="custom-scrollbar">
+                    <ul class=" list-group list-group-flush">
+                        <ng-container *ngFor="let task of tasks; let i = index">
+                            <li draggable="true" [ngClass]="{
+                            'drag-over': i === draggedOverIndex,
+                            'dragging': i === draggedIndex
+                          }" [draggable]="true" (dragstart)="handleDragStart(i,$event,dragItem)"
+                                (dragover)="handleDragOver(i,$event,dragItem)" (dragend)="handleDragEnd()" #dragItem
+                                class="list-group-item" [style.backgroundColor]="getColorBackground(task.color)"
+                                *ngIf="task.isComplete">
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-2">
+                                            <div class="custom-checkbox custom-control">
+                                                <input class="custom-control-input" [id]="'customCheckbox-' + task.id"
+                                                    type="checkbox" (change)="completeTask(task)"
+                                                    [checked]="task.isComplete"
+                                                    [style.border-color]="getBorderColor(task.priority)" />
+                                                <label class="custom-control-label"
+                                                    [for]="'customCheckbox-' + task.id">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left task-name-desc">
+                                            <div class="widget-heading">{{ task.name | truncateWords:20 }}
+                                                <!-- <div class="badge badge-danger ml-2">{{ task.status }}</div> -->
+                                            </div>
+                                            <div class="widget-subheading"><i> {{ task.description| truncateWords:20
+                                                    }}</i></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
