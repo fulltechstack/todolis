@@ -12,6 +12,7 @@ export class FtsModalComponent {
   taskName: string = '';
   taskDescription: string = '';
 
+  selectedDate!: '';
   selectedColor: string = 'yellow';
   selectedPriority: number = 1;
   isDropdownOpen: boolean = false;
@@ -61,7 +62,7 @@ export class FtsModalComponent {
       priority: this.selectedPriority,
       isComplete: false
     };
-  
+
     if (!this.data.isAdd && this.data.taskData) {
       newTask.id = this.data.taskData.id;
       newTask.status = this.data.taskData.status;
@@ -69,10 +70,10 @@ export class FtsModalComponent {
       newTask.color = this.selectedColor;
       newTask.priority = this.selectedPriority;
     }
-  
+
     const existingTasksString = localStorage.getItem('tasks');
     let existingTasks: Task[] = existingTasksString ? JSON.parse(existingTasksString) : [];
-  
+
     if (!this.data.isAdd && this.data.taskData) {
       const existingIndex = existingTasks.findIndex((t: Task) => t.id === newTask.id);
       if (existingIndex !== -1) {
@@ -83,15 +84,15 @@ export class FtsModalComponent {
       existingTasks.forEach(task => {
         task.sequence++;
       });
-  
+
       existingTasks.unshift(newTask); // Add the new task at the beginning of the array
     }
-  
+
     localStorage.setItem('tasks', JSON.stringify(existingTasks));
     this.ftsModalService.notifyTaskUpdated();
     this.ftsModalService.closeModal();
   }
-  
+
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

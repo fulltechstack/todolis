@@ -24,12 +24,15 @@
 
                 <!-- Color Dropdown -->
                 <div class="fts-dropdown">
-                    <button class="fts-dropdown-button color-dropdown-btn" (click)="toggleDropdown()" title="Assign a color">
-                        <i class="fas fa-circle color-dropdown-btn" [style.color]="colorBackgroundMap[selectedColor]"></i>
+                    <label for="colorPicker"> Color</label>
+                    <button class="fts-dropdown-button color-dropdown-btn" (click)="toggleDropdown()"
+                        title="Assign a color" id="colorPicker">
+                        <i class="fas fa-circle color-dropdown-btn"
+                            [style.color]="colorBackgroundMap[selectedColor]"></i>
                         {{ selectedColor ? selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1) : 'Select
                         Color'
                         }}
-                        <i class="fa fa-caret-down color-dropdown-btn" ></i>
+                        <i class="fa fa-caret-down color-dropdown-btn"></i>
                     </button>
                     <ul class="fts-dropdown-menu" [class.show]="isDropdownOpen">
                         <li class="fts-dropdown-item" (click)="selectColor('purple')"
@@ -49,8 +52,11 @@
 
                 <!-- Priority Dropdown -->
                 <div class="fts-dropdown">
-                    <button class="fts-dropdown-button priority-dropdown-btn" (click)="togglePriorityDropdown()" title="Priority of task">
-                        <i class="fas fa-flag priority-dropdown-btn" [style.color]="priorityColorMap[selectedPriority]"></i>
+                    <label for="priorityPicker">Priority</label>
+                    <button class="fts-dropdown-button priority-dropdown-btn" (click)="togglePriorityDropdown()"
+                        title="Priority of task" id="priorityPicker">
+                        <i class="fas fa-flag priority-dropdown-btn"
+                            [style.color]="priorityColorMap[selectedPriority]"></i>
                         {{ selectedPriority ? 'Priority ' + selectedPriority : 'Select Priority' }} <i
                             class="fa fa-caret-down priority-dropdown-btn"></i>
                     </button>
@@ -69,6 +75,12 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="form-group">
+                    <label for="datePicker">Due date</label>
+                    <input type="date" class="form-control" id="datePicker" [(ngModel)]="selectedDate">
+                </div>
+
 
             </div>
         </div>
