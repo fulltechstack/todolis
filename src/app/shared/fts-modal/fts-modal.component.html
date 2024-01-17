@@ -24,7 +24,7 @@
 
                 <!-- Color Dropdown -->
                 <div class="fts-dropdown">
-                    <button class="fts-dropdown-button color-dropdown-btn" (click)="toggleDropdown()">
+                    <button class="fts-dropdown-button color-dropdown-btn" (click)="toggleDropdown()" title="Assign a color">
                         <i class="fas fa-circle color-dropdown-btn" [style.color]="colorBackgroundMap[selectedColor]"></i>
                         {{ selectedColor ? selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1) : 'Select
                         Color'
@@ -49,7 +49,7 @@
 
                 <!-- Priority Dropdown -->
                 <div class="fts-dropdown">
-                    <button class="fts-dropdown-button priority-dropdown-btn" (click)="togglePriorityDropdown()">
+                    <button class="fts-dropdown-button priority-dropdown-btn" (click)="togglePriorityDropdown()" title="Priority of task">
                         <i class="fas fa-flag priority-dropdown-btn" [style.color]="priorityColorMap[selectedPriority]"></i>
                         {{ selectedPriority ? 'Priority ' + selectedPriority : 'Select Priority' }} <i
                             class="fa fa-caret-down priority-dropdown-btn"></i>
@@ -73,8 +73,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="close-button modal-button" (click)="closeModal($event)">Cancel</button>
-            <button class="save-button modal-button" (click)="save()">Save</button>
+            <button class="close-button modal-button" (click)="closeModal($event)" title="Close">Cancel</button>
+            <button class="save-button modal-button" (click)="save()" title="Save task">Save</button>
         </div>
     </div>
 </div>

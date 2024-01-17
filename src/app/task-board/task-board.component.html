@@ -7,7 +7,8 @@
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button"
-                        id="sortDropdownMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        id="sortDropdownMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        title="Sorting">
                         <i class="fa-solid fa-sort"></i></button>
                     <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
                         <a class="dropdown-item" (click)="selectPriority(1)">High priority first</a>
@@ -47,7 +48,7 @@
                                         </div>
                                         <div class="widget-content-right">
                                             <button class="border-0 btn-transition btn fts-btn-outline-success"
-                                                (click)="editTask(task)">
+                                                (click)="editTask(task)" title="Edit task">
                                                 <i class="fa fa-pencil"></i>
                                             </button>
                                             <!-- <button class="border-0 btn-transition btn fts-btn-outline-danger"
@@ -56,10 +57,11 @@
                                             </button> -->
                                             <button class="btn btn-secondary dropdown-toggle custom-dropdown-button"
                                                 type="button" id="sortDropdownMenu" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
+                                                aria-haspopup="true" aria-expanded="false" title="Options">
                                                 <i class="fa-solid fa-ellipsis-vertical"></i></button>
                                             <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
-                                                <a class="dropdown-item" (click)="deleteTask(task)">Delete</a>
+                                                <a class="dropdown-item" (click)="deleteTask(task)"
+                                                    title="Delete task">Delete</a>
                                             </div>
                                         </div>
                                     </div>
@@ -75,13 +77,14 @@
                     <div class="text-container">
                         <p class="desc-text">Work-life balance made easy with <span
                                 [style.color]="'#E97777'">Toodolis</span></p>
-                        <p class="add-text">Click on the <span [style.color]="'#756AB6'"> + Add task</span> button to create
+                        <p class="add-text">Click on the <span [style.color]="'#756AB6'"> + Add task</span> button to
+                            create
                             your first task</p>
                     </div>
                 </ng-template>
             </div>
             <div class="d-block text-right card-footer">
-                <span class="add-task-link" (click)="addTask()">
+                <span class="add-task-link" (click)="addTask()" title="Add a new task">
                     <i class="fa fa-plus"></i><span class="link-text"> Add task</span>
                 </span>
             </div>
