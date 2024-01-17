@@ -6,7 +6,7 @@ import { CompletedTasksBoardComponent } from './completed-tasks-board/completed-
 const routes: Routes = [
   { path: 'dashboard', component: TaskBoardComponent },
   { path: 'completed-tasks', component: CompletedTasksBoardComponent },
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' } // default path
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' } // default path
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="scrollable-container">
-                <div class="custom-scrollbar">
+                <div *ngIf="!noTaskAdded; else noTask" class="custom-scrollbar">
                     <ul class=" list-group list-group-flush">
                         <ng-container *ngFor="let task of tasks; let i = index">
                             <li draggable="true" [ngClass]="{
@@ -68,11 +68,22 @@
                         </ng-container>
                     </ul>
                 </div>
+                <ng-template #noTask>
+                    <div *ngIf="noTaskAdded" class="image-container">
+                        <img src="/assets/images/addtask.png" alt="No tasks added image" />
+                    </div>
+                    <div class="text-container">
+                        <p class="desc-text">Work-life balance made easy with <span
+                                [style.color]="'#E97777'">Toodolis</span></p>
+                        <p class="add-text">Click on the <span [style.color]="'#756AB6'"> + Add task</span> button to create
+                            your first task</p>
+                    </div>
+                </ng-template>
             </div>
             <div class="d-block text-right card-footer">
-                <a href="#" class="add-task-link" (click)="addTask()">
-                    <i class="fa fa-plus"></i><span class="link-text">Add task</span>
-                </a>
+                <span class="add-task-link" (click)="addTask()">
+                    <i class="fa fa-plus"></i><span class="link-text"> Add task</span>
+                </span>
             </div>
         </div>
     </div>

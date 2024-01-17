@@ -13,8 +13,8 @@ export class TaskBoardComponent {
   selectedPriority: number = 1;
 
   tasks = [
-    { id: 'task1', name: 'Sample task 1', status: 'Rejected', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: false },
-    { id: 'task2', name: 'Sample task 2', status: 'New', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: false },
+    { id: 'task1', name: 'Sample task 1', status: 'Rejected', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: true },
+    { id: 'task2', name: 'Sample task 2', status: 'New', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: true },
     { id: 'task3', name: 'Sample task 3', status: 'In Progress', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3, isComplete: true },
   ];
 
@@ -33,6 +33,8 @@ export class TaskBoardComponent {
   draggedIndex: number | null = null;
   draggedOverIndex: number | null = null;
 
+  noTaskAdded: boolean = false;
+
   private taskUpdatedSubscription: Subscription;
 
   ngOnInit() {
@@ -42,6 +44,9 @@ export class TaskBoardComponent {
 
     // If tasks are found in local storage, use them; otherwise, use the default tasks
     this.tasks = existingTasks.length > 0 ? existingTasks : this.tasks;
+
+    // Check if there are any tasks with isComplete set to false
+    this.checkNoTaskAdded();
   }
 
   constructor(private ftsModalService: FtsModalService) {
@@ -90,6 +95,7 @@ export class TaskBoardComponent {
       // Optionally, you can update the tasks property used in your component
       this.tasks = existingTasks;
     }
+    this.ftsModalService.notifyTaskUpdated();
   }
 
   completeTask(task: Task) {
@@ -105,6 +111,7 @@ export class TaskBoardComponent {
 
     // Update the tasks array
     this.tasks = existingTasks;
+    this.checkNoTaskAdded();
   }
 
   private updateTaskInLocalStorage(task: Task) {
@@ -190,5 +197,10 @@ export class TaskBoardComponent {
     } else {
       this.sortTasksByPriorityAscending();
     }
+  }
+
+  // Function to check if there are no tasks with isComplete set to false
+  private checkNoTaskAdded() {
+    this.noTaskAdded = this.tasks.every(task => task.isComplete === true);
   }
 }
