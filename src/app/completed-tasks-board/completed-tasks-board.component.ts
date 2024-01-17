@@ -31,6 +31,18 @@ export class CompletedTasksBoardComponent {
     pink: '#fff8ff'
   };
 
+  pillBackgroundMap: { [key: string]: string } = {
+    red: '#FFC6C6',
+    cyan: '#E0F4FF',
+    blue: '#C6C6FF'
+  };
+
+  pillTextMap: { [key: string]: string } = {
+    red: '#FF8080',
+    cyan: '#87C4FF',
+    blue: '#8080FF'
+  };
+
   draggedIndex: number | null = null;
   draggedOverIndex: number | null = null;
 
@@ -137,6 +149,15 @@ export class CompletedTasksBoardComponent {
     // Use the colorBackgroundMap to get the corresponding background color
     return this.colorBackgroundMap[color] || '';
   }
+
+  getPillColors(task: Task, setBg: boolean): string {
+    const today = new Date();
+    const dueDate = new Date(task.duedate);
+    const colorKey = dueDate > today ? 'blue' : dueDate < today ? 'red' : 'green';
+
+    return setBg ? this.pillBackgroundMap[colorKey] || '' : this.pillTextMap[colorKey] || '';
+  }
+
 
   handleDragStart(index: number, event: DragEvent, dragElement: HTMLElement) {
     this.draggedIndex = index;

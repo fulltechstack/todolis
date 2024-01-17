@@ -41,6 +41,7 @@ export class FtsModalComponent {
       this.taskDescription = this.data.taskData.description;
       this.selectedColor = this.data.taskData.color;
       this.selectedPriority = this.data.taskData.priority;
+      this.selectedDate = this.data.taskData.dueDate;
     }
     // Set the selectedDate to today's date
     const currentDate = new Date();
@@ -71,7 +72,7 @@ export class FtsModalComponent {
 
     if (!this.data.isAdd && this.data.taskData) {
       newTask.id = this.data.taskData.id;
-      newTask.duedate = this.data.taskData.duedate;
+      newTask.duedate = this.selectedDate;
       newTask.sequence = this.data.taskData.sequence;
       newTask.color = this.selectedColor;
       newTask.priority = this.selectedPriority;

@@ -45,7 +45,11 @@
                                             </div>
                                             <div class="widget-subheading"><i> {{ task.description| truncateWords:20
                                                     }}</i></div>
-                                            <div class="task-pills badge">{{ task.duedate }}</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="task-pills badge" [style.color]="getPillColors(task,false)"
+                                                [style.backgroundColor]="getPillColors(task,true)">{{ task.duedate
+                                                }}</div>
                                         </div>
                                     </div>
                                 </div>
