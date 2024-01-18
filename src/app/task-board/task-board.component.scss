@@ -171,8 +171,17 @@
     padding: 8px;
     color: #756AB6;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
+
+    .fa-plus {
+        padding: 3px;
+        background-color: white;
+        border-radius: 14px;
+        font-size: 11px;
+        color: #756AB6;
+        margin-right: 3px;
+    }
 
     .fas.fa-plus {
         background-color: #756AB6;
@@ -181,6 +190,20 @@
         margin-right: 5px;
         color: #FAF3F0;
     }
+}
+
+.add-task-link {
+    padding: 6px;
+    background-color: white;
+    border-radius: 14px;
+    color: #756AB6;
+}
+
+.add-task-link:hover {
+    padding: 6px;
+    background-color: #756AB6;
+    border-radius: 14px;
+    color: white;
 }
 
 .scrollable-container {

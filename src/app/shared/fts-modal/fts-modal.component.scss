@@ -58,7 +58,7 @@ $secondary-color: #0056b3;
 .modal-footer {
     display: flex;
     justify-content: flex-end;
-    margin: 0 4px 4px 0;
+    margin: 5px 7px 5px 0;
 }
 
 /* Modal Button Styles */
@@ -246,6 +246,7 @@ $secondary-color: #0056b3;
 .fts-flex-container {
     display: flex;
     justify-content: left;
+    border-bottom: solid 1px #d5d5d5;
 }
 
 .fts-dropdown {
