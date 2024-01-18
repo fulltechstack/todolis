@@ -1,0 +1,11 @@
+<!-- src/app/fts-alert/fts-alert.component.html -->
+<div class="alert-container" *ngIf="alertConfig?.message">
+    <div class="alert" [ngClass]="getAlertClass()">
+        <div class="alert-content">
+            <span class="alert-message">{{ alertConfig.message }}</span>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+            <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+        </button>
+    </div>
+</div>

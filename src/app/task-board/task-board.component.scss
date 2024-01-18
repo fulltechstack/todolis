@@ -170,6 +170,7 @@
 
 .scrollable-container {
     height: 288px;
+    max-height: 288px;
     position: relative;
     overflow: auto;
 }

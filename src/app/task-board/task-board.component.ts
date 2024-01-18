@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FtsModalService } from '../shared/fts-modal.service';
 import { Task } from '../shared/models/task.model';
 import { Subscription } from 'rxjs';
+import { FtsAlertService } from '../shared/services/fts-alert.service';
+import { AlertType } from '../shared/models/alert-config.model';
 
 @Component({
   selector: 'app-task-board',
@@ -61,7 +63,7 @@ export class TaskBoardComponent {
     this.checkNoTaskAdded();
   }
 
-  constructor(private ftsModalService: FtsModalService) {
+  constructor(private ftsModalService: FtsModalService, private alertService: FtsAlertService) {
     this.taskUpdatedSubscription = this.ftsModalService.taskUpdatedSubject.subscribe(() => {
       // Update the tasks array when notified
       this.updateTasks();
@@ -108,12 +110,15 @@ export class TaskBoardComponent {
       this.tasks = existingTasks;
     }
     this.ftsModalService.notifyTaskUpdated();
+    this.alertService.alert(AlertType.Success, '1 task deleted');
+
   }
 
   completeTask(task: Task) {
     task.isComplete = true;
     this.updateTaskInLocalStorage(task);
     this.ftsModalService.notifyTaskUpdated();
+    this.alertService.alert(AlertType.Success, '1 task completed', true, 5000);
   }
 
   private updateTasks() {
