@@ -1,3 +1,17 @@
+.container {
+    @keyframes appear {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    animation: appear 0.5s ease-in-out;
+}
+
 .card {
     border-width: 0;
     transition: all .2s;
@@ -392,6 +406,22 @@
 
 // no task image
 
+.notask-container {
+
+    /* Define the keyframes for the appear animation */
+    @keyframes appear {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    animation: appear 0.2s ease-in-out;
+}
+
 .image-container {
     display: flex;
     justify-content: center;
@@ -412,14 +442,14 @@
 .desc-text {
     font-style: italic;
     font-weight: bold;
-    color: #d3d3d4;
-    opacity: 0.7;
+    color: #c1c1c4;
+    opacity: 0.5;
 }
 
 .add-text {
     font-weight: bold;
-    color: #d3d3d4;
-    opacity: 0.7;
+    color: #c1c1c4;
+    opacity: 0.5;
 }
 
 .task-pills {

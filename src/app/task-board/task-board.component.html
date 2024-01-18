@@ -73,15 +73,18 @@
                     </ul>
                 </div>
                 <ng-template #noTask>
-                    <div *ngIf="noTaskAdded" class="image-container">
-                        <img src="/assets/images/addtask.png" alt="No tasks added image" />
-                    </div>
-                    <div class="text-container">
-                        <p class="desc-text">Work-life balance made easy with <span
-                                [style.color]="'#E97777'">Toodolis</span></p>
-                        <p class="add-text">Click on the <span [style.color]="'#756AB6'"> + Add task</span> button to
-                            create
-                            your first task</p>
+                    <div class="notask-container">
+                        <div *ngIf="noTaskAdded" class="image-container">
+                            <img src="/assets/images/addtask.png" alt="No tasks added image" />
+                        </div>
+                        <div class="text-container">
+                            <p class="desc-text">Work-life balance made easy with <span
+                                    [style.color]="'#E97777'">Todolis</span></p>
+                            <p class="add-text">Click <span [style.color]="'#756AB6'"> + Add task</span> button
+                                to
+                                create
+                                your first task</p>
+                        </div>
                     </div>
                 </ng-template>
                 <div class="alert-overlay">
