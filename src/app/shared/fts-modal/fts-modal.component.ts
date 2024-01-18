@@ -59,6 +59,14 @@ export class FtsModalComponent {
   }
 
   save() {
+    if (!this.taskName) {
+      this.taskName = 'New Task';
+    }
+
+    if (!this.taskDescription) {
+      this.taskDescription = 'Drink plenty of water';
+    }
+
     const newTask: Task = {
       id: 'taskName' + Math.random(),
       name: this.taskName,

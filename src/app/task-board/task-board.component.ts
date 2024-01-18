@@ -39,9 +39,9 @@ export class TaskBoardComponent {
   };
 
   pillTextMap: { [key: string]: string } = {
-    red: '#FF8080',
+    red: '#740101',
     cyan: '#87C4FF',
-    blue: '#8080FF'
+    blue: '#00008B'
   };
 
   draggedIndex: number | null = null;
@@ -118,7 +118,7 @@ export class TaskBoardComponent {
     task.isComplete = true;
     this.updateTaskInLocalStorage(task);
     this.ftsModalService.notifyTaskUpdated();
-    this.alertService.alert(AlertType.Success, '1 task completed', true, 5000);
+    this.alertService.alert(AlertType.Success, '1 task completed', false, 5000);
   }
 
   private updateTasks() {
@@ -162,9 +162,16 @@ export class TaskBoardComponent {
   }
 
   getPillColors(task: Task, setBg: boolean): string {
+    // const today = new Date();
+    // const dueDate = new Date(task.duedate);
+
+    //This code is only for comparing days not the time
     const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set time to midnight
+
     const dueDate = new Date(task.duedate);
-    const colorKey = dueDate > today ? 'blue' : dueDate < today ? 'red' : 'green';
+    dueDate.setHours(0, 0, 0, 0); // Set time to midnight
+    const colorKey = dueDate < today ? 'red' : 'blue';
 
     return setBg ? this.pillBackgroundMap[colorKey] || '' : this.pillTextMap[colorKey] || '';
   }
