@@ -118,7 +118,7 @@ export class TaskBoardComponent {
     task.isComplete = true;
     this.updateTaskInLocalStorage(task);
     this.ftsModalService.notifyTaskUpdated();
-    this.alertService.alert(AlertType.Success, '1 task completed', false, 5000);
+    this.alertService.alert(AlertType.Success, '1 task completed', true, 5000);
   }
 
   private updateTasks() {

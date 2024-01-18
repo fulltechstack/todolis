@@ -1,6 +1,8 @@
 import { Component, Input, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { FtsModalService } from '../fts-modal.service';
 import { Task } from '../models/task.model';
+import { AlertType } from '../models/alert-config.model';
+import { FtsAlertService } from '../services/fts-alert.service';
 
 @Component({
   selector: 'app-fts-modal',
@@ -32,7 +34,8 @@ export class FtsModalComponent {
 
   constructor(
     private ftsModalService: FtsModalService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private alertService: FtsAlertService
   ) { }
 
   ngOnInit() {
@@ -101,6 +104,7 @@ export class FtsModalComponent {
       });
 
       existingTasks.unshift(newTask); // Add the new task at the beginning of the array
+      this.alertService.alert(AlertType.Success, '1 new task added');
     }
 
     localStorage.setItem('tasks', JSON.stringify(existingTasks));

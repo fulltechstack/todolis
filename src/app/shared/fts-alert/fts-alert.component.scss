@@ -32,6 +32,16 @@
             /* Transition to its original position */
         }
     }
+
+    @keyframes fadeRightToLeft {
+        from {
+            transform: translateX(100%); /* Start from the right side of the container */
+        }
+    
+        to {
+            transform: translateX(0); /* Transition to its original position */
+        }
+    }
 }
 
 button.close {

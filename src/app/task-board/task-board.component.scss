@@ -162,6 +162,7 @@
 
 .card-footer {
     background-color: #fff;
+    text-align: right;
 }
 
 .add-task-link {
@@ -457,4 +458,12 @@
     color: #87C4FF;
     background-color: #E0F4FF;
     font-size: 10px;
+}
+
+.alert-overlay {
+    position: fixed;
+    width: 50%;
+    bottom: 23px;
+    left: -19px;
+    z-index: 9999;
 }
