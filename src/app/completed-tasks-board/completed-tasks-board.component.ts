@@ -160,10 +160,11 @@ export class CompletedTasksBoardComponent {
   }
 
   getPillColors(task: Task, setBg: boolean): string {
-    const today = new Date();
+    debugger
+    const completedDateTime = new Date(`${task.completedOn} ${task.completedAt}`);
     const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`);
 
-    if (dueDateTime < today) {
+    if (dueDateTime < completedDateTime) {
       return setBg ? this.pillBackgroundMap['red'] || '' : this.pillTextMap['red'] || '';
     } else {
       return setBg ? this.pillBackgroundMap['blue'] || '' : this.pillTextMap['blue'] || '';
@@ -207,15 +208,25 @@ export class CompletedTasksBoardComponent {
     const hours = Math.floor((Math.abs(timeDifference) % 86400000) / 3600000); // 1 hour = 3600000 milliseconds
     const minutes = Math.floor((Math.abs(timeDifference) % 3600000) / 60000); // 1 minute = 60000 milliseconds
 
+    let timeString = '';
+
+    if (days > 0) {
+      timeString += `${days}d `;
+    }
+    if (hours > 0) {
+      timeString += `${hours}h `;
+    }
+    timeString += `${minutes}m`;
+
     if (timeDifference < 0) {
-      return `Task completed ${days}d ${hours}h ${minutes}m before due`;
+      return `Task completed ${timeString} before due`;
     }
 
     if (timeDifference === 0) {
       return 'Task completed on time';
     }
 
-    return `Task completed ${days}d ${hours}h ${minutes}m after due`;
+    return `Task completed ${timeString} after due`;
   }
 }
 

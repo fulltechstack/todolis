@@ -254,6 +254,7 @@ export class TaskBoardComponent {
   }
 
   getTimeLeft(task: Task): string {
+    debugger
     const now = new Date().getTime(); // Convert current date to milliseconds
     const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`).getTime(); // Convert task's due date and time to milliseconds
     const timeDifference = dueDateTime - now;
@@ -265,6 +266,7 @@ export class TaskBoardComponent {
     const daysLeft = Math.floor(timeDifference / 86400000); // 1 day = 86400000 milliseconds
     const hoursLeft = Math.floor((timeDifference % 86400000) / 3600000); // 1 hour = 3600000 milliseconds
     const minutesLeft = Math.floor((timeDifference % 3600000) / 60000); // 1 minute = 60000 milliseconds
+    const secondsLeft = Math.floor((timeDifference % 60000) / 1000); // 1 second = 1000 milliseconds
 
     let timeLeftString = '';
     if (daysLeft > 0) {
@@ -273,10 +275,13 @@ export class TaskBoardComponent {
     if (hoursLeft > 0) {
       timeLeftString += `${hoursLeft}h `;
     }
-    if (minutesLeft > 0) {
+    if (minutesLeft > 0 || daysLeft > 0 || hoursLeft > 0) {
       timeLeftString += `${minutesLeft}m `;
+    } else if (secondsLeft > 0) {
+      timeLeftString = 'few seconds ';
     }
 
     return timeLeftString + 'left';
-  }
+}
+
 }
