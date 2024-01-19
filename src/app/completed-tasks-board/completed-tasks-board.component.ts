@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class CompletedTasksBoardComponent {
 
-
+  deleteTasksMoreThan = 5;
   selectedPriority: number = 1;
 
   tasks = [
@@ -53,6 +53,9 @@ export class CompletedTasksBoardComponent {
 
     // If tasks are found in local storage, use them; otherwise, use the default tasks
     this.tasks = existingTasks.length > 0 ? existingTasks : this.tasks;
+
+    // Delete tasks that were completed more than 5 days ago
+    this.deleteOldCompletedTasks(this.deleteTasksMoreThan);
   }
 
   constructor(private ftsModalService: FtsModalService) {
@@ -227,6 +230,24 @@ export class CompletedTasksBoardComponent {
     }
 
     return `Task completed ${timeString} after due`;
+  }
+
+  private deleteOldCompletedTasks(deleteTasksMoreThan: number) {
+    const fiveDaysInMilliseconds = deleteTasksMoreThan * 24 * 60 * 60 * 1000;
+    const now = new Date().getTime();
+
+    this.tasks.forEach(task => {
+      const completedDateTime = new Date(`${task.completedOn} ${task.completedAt}`).getTime();
+      if (now - completedDateTime > fiveDaysInMilliseconds) {
+        this.deleteTask(task);
+      }
+    });
+
+    // Optionally, you can update the tasks property used in your component
+    this.tasks = this.tasks.filter(task => {
+      const completedDateTime = new Date(`${task.completedOn} ${task.completedAt}`).getTime();
+      return now - completedDateTime <= fiveDaysInMilliseconds;
+    });
   }
 }
 
