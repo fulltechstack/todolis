@@ -24,10 +24,8 @@
                             <li draggable="true" [ngClass]="{
                             'drag-over': i === draggedOverIndex,
                             'dragging': i === draggedIndex
-                          }" [draggable]="true" (dragstart)="handleDragStart(i,$event,dragItem)"
-                                (dragover)="handleDragOver(i,$event,dragItem)" (dragend)="handleDragEnd()" #dragItem
-                                class="list-group-item" [style.backgroundColor]="getColorBackground(task.color)"
-                                *ngIf="task.isComplete">
+                          }" [draggable]="true" #dragItem class="list-group-item"
+                                [style.backgroundColor]="getColorBackground(task.color)" *ngIf="task.isComplete">
                                 <div class="widget-content p-0">
                                     <div class="widget-content-wrapper">
                                         <div class="widget-content-left mr-2">
@@ -49,8 +47,9 @@
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="task-pills badge" [style.color]="getPillColors(task,false)"
-                                                [style.backgroundColor]="getPillColors(task,true)">{{ task.duedate
-                                                }}</div>
+                                                [style.backgroundColor]="getPillColors(task,true)"> {{ getTimeLeft(task)
+                                                }}
+                                            </div>
                                             <div class="centered-div"><button
                                                     class="border-0 btn-transition btn fts-btn-outline-success"
                                                     (click)="viewTask(task)">

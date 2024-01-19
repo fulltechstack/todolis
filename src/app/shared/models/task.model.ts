@@ -7,4 +7,8 @@ export interface Task {
     sequence: number;
     priority: number;
     isComplete: boolean;
+    completedOn: string;
+    completedAt: string;
+    dueTime: string;
+    createdBy: string;
 }

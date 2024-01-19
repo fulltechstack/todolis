@@ -14,10 +14,8 @@ export class TaskBoardComponent {
 
   selectedPriority: number = 1;
 
-  tasks = [
-    { id: 'task1', name: 'Sample task 1', duedate: '08-02-2024', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: true },
-    { id: 'task2', name: 'Sample task 2', duedate: '08-03-2024', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: true },
-    { id: 'task3', name: 'Sample task 3', duedate: '08-04-2024', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3, isComplete: true },
+  tasks: Task[] = [
+    { id: 'task2', name: 'Sample task 2', duedate: '08-03-2024', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: true, completedAt: '12-03-2024', completedOn: '08:40', dueTime: '07:48', createdBy: 'Akash' },
   ];
 
   priorityColorMap: { [key: string]: string } = {
@@ -115,7 +113,16 @@ export class TaskBoardComponent {
   }
 
   completeTask(task: Task) {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Add 1 to month because it's zero-based
+    const day = currentDate.getDate().toString().padStart(2, '0');
+    const hours = currentDate.getHours().toString().padStart(2, '0');
+    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+
     task.isComplete = true;
+    task.completedAt = `${hours}:${minutes}`;
+    task.completedOn = `${year}-${month}-${day}`;
     this.updateTaskInLocalStorage(task);
     this.ftsModalService.notifyTaskUpdated();
     this.alertService.alert(AlertType.Success, '1 task completed', true, 5000);
@@ -162,18 +169,14 @@ export class TaskBoardComponent {
   }
 
   getPillColors(task: Task, setBg: boolean): string {
-    // const today = new Date();
-    // const dueDate = new Date(task.duedate);
-
-    //This code is only for comparing days not the time
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Set time to midnight
+    const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`);
 
-    const dueDate = new Date(task.duedate);
-    dueDate.setHours(0, 0, 0, 0); // Set time to midnight
-    const colorKey = dueDate < today ? 'red' : 'blue';
-
-    return setBg ? this.pillBackgroundMap[colorKey] || '' : this.pillTextMap[colorKey] || '';
+    if (dueDateTime < today) {
+      return setBg ? this.pillBackgroundMap['red'] || '' : this.pillTextMap['red'] || '';
+    } else {
+      return setBg ? this.pillBackgroundMap['blue'] || '' : this.pillTextMap['blue'] || '';
+    }
   }
 
   handleDragStart(index: number, event: DragEvent, dragElement: HTMLElement) {
@@ -234,11 +237,12 @@ export class TaskBoardComponent {
   // Sort tasks by due date with the earliest due date first
   sortTasksByDueDateEarliestFirst() {
     this.tasks.sort((a, b) => {
-      const dueDateA = new Date(a.duedate).getTime();
-      const dueDateB = new Date(b.duedate).getTime();
+      const dueDateA = new Date(`${a.duedate} ${a.dueTime}`).getTime();
+      const dueDateB = new Date(`${b.duedate} ${b.dueTime}`).getTime();
       return dueDateA - dueDateB; // Sort in ascending order
     });
   }
+
 
   sortDueDate() {
     this.sortTasksByDueDateEarliestFirst(); // Sort with the earliest due date first
@@ -247,5 +251,32 @@ export class TaskBoardComponent {
   // Function to check if there are no tasks with isComplete set to false
   private checkNoTaskAdded() {
     this.noTaskAdded = this.tasks.every(task => task.isComplete === true);
+  }
+
+  getTimeLeft(task: Task): string {
+    const now = new Date().getTime(); // Convert current date to milliseconds
+    const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`).getTime(); // Convert task's due date and time to milliseconds
+    const timeDifference = dueDateTime - now;
+
+    if (timeDifference < 0) {
+      return 'Task overdue';
+    }
+
+    const daysLeft = Math.floor(timeDifference / 86400000); // 1 day = 86400000 milliseconds
+    const hoursLeft = Math.floor((timeDifference % 86400000) / 3600000); // 1 hour = 3600000 milliseconds
+    const minutesLeft = Math.floor((timeDifference % 3600000) / 60000); // 1 minute = 60000 milliseconds
+
+    let timeLeftString = '';
+    if (daysLeft > 0) {
+      timeLeftString += `${daysLeft}d `;
+    }
+    if (hoursLeft > 0) {
+      timeLeftString += `${hoursLeft}h `;
+    }
+    if (minutesLeft > 0) {
+      timeLeftString += `${minutesLeft}m `;
+    }
+
+    return timeLeftString + 'left';
   }
 }

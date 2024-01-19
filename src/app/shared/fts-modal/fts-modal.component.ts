@@ -15,6 +15,7 @@ export class FtsModalComponent {
   taskDescription: string = '';
 
   selectedDate!: string;
+  selectedTime!: string;
   selectedColor: string = 'yellow';
   selectedPriority: number = 1;
   isDropdownOpen: boolean = false;
@@ -47,13 +48,20 @@ export class FtsModalComponent {
       this.selectedColor = this.data.taskData.color;
       this.selectedPriority = this.data.taskData.priority;
       this.selectedDate = this.data.taskData.dueDate;
+      this.selectedTime = this.data.taskData.dueTime;
     }
     // Set the selectedDate to today's date
     const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 1); // Add 1 day to the current date
     const year = currentDate.getFullYear();
     const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Add 1 to month because it's zero-based
     const day = currentDate.getDate().toString().padStart(2, '0');
+    const hours = currentDate.getHours().toString().padStart(2, '0');
+    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+
     this.selectedDate = this.data?.taskData?.duedate || `${year}-${month}-${day}`;
+    this.selectedTime = this.data?.taskData?.dueTime || `${hours}:${minutes}`;
+
     this.isViewMode = this.data?.isViewOnly;
   }
 
@@ -81,7 +89,11 @@ export class FtsModalComponent {
       sequence: 1, // Set the sequence for new tasks to 1
       color: this.selectedColor,
       priority: this.selectedPriority,
-      isComplete: false
+      isComplete: false,
+      dueTime: this.selectedTime,
+      completedAt: '',
+      completedOn: '',
+      createdBy: 'Akash',
     };
 
     if (!this.data.isAdd && this.data.taskData) {
@@ -90,6 +102,7 @@ export class FtsModalComponent {
       newTask.sequence = this.data.taskData.sequence;
       newTask.color = this.selectedColor;
       newTask.priority = this.selectedPriority;
+      newTask.dueTime = this.selectedTime;
     }
 
     const existingTasksString = localStorage.getItem('tasks');

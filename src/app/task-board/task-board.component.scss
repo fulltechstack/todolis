@@ -101,6 +101,11 @@
     align-items: center;
 }
 
+.centered-div {
+    display: flex;
+    justify-content: right;
+}
+
 .widget-content .widget-content-wrapper {
     display: flex;
     flex: 1;

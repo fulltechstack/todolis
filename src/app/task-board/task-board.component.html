@@ -49,23 +49,26 @@
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="task-pills badge" [style.color]="getPillColors(task,false)"
-                                                [style.backgroundColor]="getPillColors(task,true)">{{ task.duedate
-                                                }}</div> <button
-                                                class="border-0 btn-transition btn fts-btn-outline-success"
-                                                (click)="editTask(task)" title="Edit task">
-                                                <i class="fa fa-pencil"></i>
-                                            </button>
-                                            <!-- <button class="border-0 btn-transition btn fts-btn-outline-danger"
+                                                [style.backgroundColor]="getPillColors(task,true)"> {{ getTimeLeft(task)
+                                                }}
+                                            </div>
+                                            <div class="centered-div"> <button
+                                                    class="border-0 btn-transition btn fts-btn-outline-success"
+                                                    (click)="editTask(task)" title="Edit task">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                                <!-- <button class="border-0 btn-transition btn fts-btn-outline-danger"
                                                 (click)="deleteTask(task)">
                                                 <i class="fa fa-trash"></i>
                                             </button> -->
-                                            <button class="btn btn-secondary dropdown-toggle custom-dropdown-button"
-                                                type="button" id="sortDropdownMenu" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false" title="Options">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                            <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
-                                                <a class="dropdown-item" (click)="deleteTask(task)"
-                                                    title="Delete task">Delete</a>
+                                                <button class="btn btn-secondary dropdown-toggle custom-dropdown-button"
+                                                    type="button" id="sortDropdownMenu" data-bs-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false" title="Options">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                                <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
+                                                    <a class="dropdown-item" (click)="deleteTask(task)"
+                                                        title="Delete task">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

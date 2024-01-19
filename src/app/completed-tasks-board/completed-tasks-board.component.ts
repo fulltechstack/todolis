@@ -14,9 +14,7 @@ export class CompletedTasksBoardComponent {
   selectedPriority: number = 1;
 
   tasks = [
-    { id: 'task1', name: 'Sample task 1', duedate: '08-02-2024', description: 'Test desc 1', sequence: 1, color: 'yellow', priority: 2, isComplete: true },
-    { id: 'task2', name: 'Sample task 2', duedate: '08-03-2024', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: true },
-    { id: 'task3', name: 'Sample task 3', duedate: '08-04-2024', description: 'Test desc 3', sequence: 3, color: 'pink', priority: 3, isComplete: true },
+    { id: 'task2', name: 'Sample task 2', duedate: '08-03-2024', description: 'Test desc 2', sequence: 2, color: 'purple', priority: 1, isComplete: true, completedAt: '12-03-2024', completedOn: '08:40', dueTime: '07:48', createdBy: 'Akash' },
   ];
 
   priorityColorMap: { [key: string]: string } = {
@@ -163,51 +161,13 @@ export class CompletedTasksBoardComponent {
 
   getPillColors(task: Task, setBg: boolean): string {
     const today = new Date();
-    const dueDate = new Date(task.duedate);
-    const colorKey = dueDate > today ? 'blue' : dueDate < today ? 'red' : 'green';
+    const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`);
 
-    return setBg ? this.pillBackgroundMap[colorKey] || '' : this.pillTextMap[colorKey] || '';
-  }
-
-
-  handleDragStart(index: number, event: DragEvent, dragElement: HTMLElement) {
-    this.draggedIndex = index;
-    const invisibleClone = dragElement.cloneNode(true) as HTMLElement;
-    invisibleClone.style.opacity = '0';
-    document.body.appendChild(invisibleClone);
-    event.dataTransfer?.setDragImage(invisibleClone, 0, 0);
-    setTimeout(() => {
-      document.body.removeChild(invisibleClone);
-    }, 0);
-  }
-
-  handleDragOver(index: number, event: DragEvent, dragElement: HTMLElement) {
-    if (this.draggedIndex === null) return;
-
-    const updatedTasks = [...this.tasks];
-    const draggedTask = updatedTasks[this.draggedIndex];
-
-    draggedTask.sequence = index + 1;
-
-    updatedTasks.splice(this.draggedIndex, 1);
-    updatedTasks.splice(index, 0, draggedTask);
-
-    updatedTasks.forEach((task, i) => {
-      task.sequence = i + 1;
-    });
-
-    this.tasks = updatedTasks;
-    this.draggedIndex = index;
-    this.draggedOverIndex = index;
-
-    // Prevent the default behavior of dragover
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  }
-
-  handleDragEnd() {
-    this.draggedIndex = null;
-    this.draggedOverIndex = null;
-    this.ftsModalService.notifyTaskUpdated();
+    if (dueDateTime < today) {
+      return setBg ? this.pillBackgroundMap['red'] || '' : this.pillTextMap['red'] || '';
+    } else {
+      return setBg ? this.pillBackgroundMap['blue'] || '' : this.pillTextMap['blue'] || '';
+    }
   }
 
   sortTasksByPriorityAscending() {
@@ -236,6 +196,26 @@ export class CompletedTasksBoardComponent {
 
   sortDueDate() {
     this.sortTasksByDueDateEarliestFirst(); // Sort with the earliest due date first
+  }
+
+  getTimeLeft(task: Task): string {
+    const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`).getTime(); // Convert due date and time to milliseconds
+    const completedDateTime = new Date(`${task.completedOn} ${task.completedAt}`).getTime(); // Convert completed date and time to milliseconds
+    const timeDifference = completedDateTime - dueDateTime;
+
+    const days = Math.floor(Math.abs(timeDifference) / 86400000); // 1 day = 86400000 milliseconds
+    const hours = Math.floor((Math.abs(timeDifference) % 86400000) / 3600000); // 1 hour = 3600000 milliseconds
+    const minutes = Math.floor((Math.abs(timeDifference) % 3600000) / 60000); // 1 minute = 60000 milliseconds
+
+    if (timeDifference < 0) {
+      return `Task completed ${days}d ${hours}h ${minutes}m before due`;
+    }
+
+    if (timeDifference === 0) {
+      return 'Task completed on time';
+    }
+
+    return `Task completed ${days}d ${hours}h ${minutes}m after due`;
   }
 }
 
