@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Todolis",
     "version": "1.0",
-    "description": "Work-life balance made easy with DoThis for Chrome.",
+    "description": "Work-life balance made easy with Todolis for Chrome.",
     "action": {
         "default_popup": "index.html",
         "default_icon": {
