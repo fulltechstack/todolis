@@ -231,6 +231,19 @@ export class TaskBoardComponent {
     }
   }
 
+  // Sort tasks by due date with the earliest due date first
+  sortTasksByDueDateEarliestFirst() {
+    this.tasks.sort((a, b) => {
+      const dueDateA = new Date(a.duedate).getTime();
+      const dueDateB = new Date(b.duedate).getTime();
+      return dueDateA - dueDateB; // Sort in ascending order
+    });
+  }
+
+  sortDueDate() {
+    this.sortTasksByDueDateEarliestFirst(); // Sort with the earliest due date first
+  }
+
   // Function to check if there are no tasks with isComplete set to false
   private checkNoTaskAdded() {
     this.noTaskAdded = this.tasks.every(task => task.isComplete === true);

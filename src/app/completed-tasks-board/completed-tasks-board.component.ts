@@ -38,9 +38,9 @@ export class CompletedTasksBoardComponent {
   };
 
   pillTextMap: { [key: string]: string } = {
-    red: '#FF8080',
+    red: '#740101',
     cyan: '#87C4FF',
-    blue: '#8080FF'
+    blue: '#00008B'
   };
 
   draggedIndex: number | null = null;
@@ -72,7 +72,8 @@ export class CompletedTasksBoardComponent {
   addTask() {
     const data = {
       isAdd: true,
-      taskData: null
+      taskData: null,
+      isViewOnly: false
     };
     this.ftsModalService.openModal(data);
   }
@@ -80,7 +81,17 @@ export class CompletedTasksBoardComponent {
   editTask(task: any) {
     const data = {
       isAdd: false,
-      taskData: task
+      taskData: task,
+      isViewOnly: false
+    };
+    this.ftsModalService.openModal(data);
+  }
+
+  viewTask(task: any) {
+    const data = {
+      isAdd: false,
+      taskData: task,
+      isViewOnly: true
     };
     this.ftsModalService.openModal(data);
   }
@@ -212,6 +223,19 @@ export class CompletedTasksBoardComponent {
     } else {
       this.sortTasksByPriorityAscending();
     }
+  }
+
+  // Sort tasks by due date with the earliest due date first
+  sortTasksByDueDateEarliestFirst() {
+    this.tasks.sort((a, b) => {
+      const dueDateA = new Date(a.duedate).getTime();
+      const dueDateB = new Date(b.duedate).getTime();
+      return dueDateA - dueDateB; // Sort in ascending order
+    });
+  }
+
+  sortDueDate() {
+    this.sortTasksByDueDateEarliestFirst(); // Sort with the earliest due date first
   }
 }
 

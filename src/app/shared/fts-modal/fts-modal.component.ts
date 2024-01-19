@@ -20,6 +20,8 @@ export class FtsModalComponent {
   isDropdownOpen: boolean = false;
   isPriorityDropdownOpen: boolean = false;
 
+  isViewMode: boolean = false;
+
   colorBackgroundMap: { [key: string]: string } = {
     purple: '#9c33d9',
     yellow: '#F7B924',
@@ -52,6 +54,7 @@ export class FtsModalComponent {
     const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Add 1 to month because it's zero-based
     const day = currentDate.getDate().toString().padStart(2, '0');
     this.selectedDate = this.data?.taskData?.duedate || `${year}-${month}-${day}`;
+    this.isViewMode = this.data?.isViewOnly;
   }
 
   closeModal(event: MouseEvent): void {
@@ -129,31 +132,6 @@ export class FtsModalComponent {
   selectPriority(priority: number) {
     this.selectedPriority = priority;
     this.isPriorityDropdownOpen = false;
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    // Check if the click is outside of both dropdowns
-    const target = event.target as HTMLElement;
-    const className = target.className;
-    if (className.includes("color-dropdown-btn")) {
-      this.isPriorityDropdownOpen = false;
-      return;
-    }
-    if (className.includes("priority-dropdown-btn")) {
-      this.isDropdownOpen = false;
-      return;
-    }
-    const dropdownElement = this.elementRef.nativeElement.querySelector('.fts-dropdown-item');
-    const priorityDropdownElement = this.elementRef.nativeElement.querySelector('.fts-dropdown-item');
-
-    if (
-      !dropdownElement.contains(event.target) ||
-      !priorityDropdownElement.contains(event.target)
-    ) {
-      this.isDropdownOpen = false;
-      this.isPriorityDropdownOpen = false;
-    }
   }
 
   @HostListener('document:keydown', ['$event'])

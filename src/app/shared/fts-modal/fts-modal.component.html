@@ -14,72 +14,67 @@
                 </div>
             </div>
             <div *ngIf="!data.isAdd" class="display-section">
-                <input type="text" class="borderless-input tname" placeholder="Task name" [(ngModel)]="taskName">
+                <input type="text" class="borderless-input tname" placeholder="Task name" [(ngModel)]="taskName"
+                    [disabled]="isViewMode">
                 <div class="scrollable-container">
-                    <textarea class="custom-scrollbar" placeholder="Description"
-                        [(ngModel)]="taskDescription"></textarea>
+                    <textarea class="custom-scrollbar" placeholder="Description" [(ngModel)]="taskDescription"
+                        [disabled]="isViewMode"></textarea>
                 </div>
             </div>
 
             <div class="fts-flex-container">
 
                 <!-- Color Dropdown -->
-                <div class="fts-dropdown">
+                <div class="dropdown">
                     <label for="colorPicker"> Color</label>
-                    <button class="fts-dropdown-button color-dropdown-btn" (click)="toggleDropdown()"
-                        title="Assign a color" id="colorPicker">
+                    <button class="btn fts-dropdown-button dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" title="Assign a color" id="colorPicker"
+                        [disabled]="isViewMode" (click)="toggleDropdown()">
                         <i class="fas fa-circle color-dropdown-btn"
                             [style.color]="colorBackgroundMap[selectedColor]"></i>
-                        {{ selectedColor ? selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1) : 'Select
-                        Color'
+                        {{ selectedColor ? selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1) :
+                        'Select Color'
                         }}
-                        <i class="fa fa-caret-down color-dropdown-btn"></i>
                     </button>
-                    <ul class="fts-dropdown-menu" [class.show]="isDropdownOpen">
-                        <li class="fts-dropdown-item" (click)="selectColor('purple')"
-                            [class.selected]="selectedColor === 'purple'">
+                    <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
+                        <a class="dropdown-item" (click)="selectColor('purple')">
                             <i class="fas fa-circle color-purple"></i> Purple
-                        </li>
-                        <li class="fts-dropdown-item" (click)="selectColor('yellow')"
-                            [class.selected]="selectedColor === 'yellow'">
+                        </a>
+                        <a class="dropdown-item" (click)="selectColor('yellow')">
                             <i class="fas fa-circle color-yellow"></i> Yellow
-                        </li>
-                        <li class="fts-dropdown-item" (click)="selectColor('pink')"
-                            [class.selected]="selectedColor === 'pink'">
+                        </a>
+                        <a class="dropdown-item" (click)="selectColor('pink')">
                             <i class="fas fa-circle color-pink"></i> Pink
-                        </li>
-                    </ul>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Priority Dropdown -->
-                <div class="fts-dropdown">
-                    <label for="priorityPicker">Priority</label>
-                    <button class="fts-dropdown-button priority-dropdown-btn" (click)="togglePriorityDropdown()"
-                        title="Priority of task" id="priorityPicker">
+                <div class="dropdown">
+                    <label for="priorityPicker"> Priority </label>
+                    <button class="btn fts-dropdown-button dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" title="Assign a color" id="priorityPicker"
+                        [disabled]="isViewMode" (click)="togglePriorityDropdown()">
                         <i class="fas fa-flag priority-dropdown-btn"
                             [style.color]="priorityColorMap[selectedPriority]"></i>
-                        {{ selectedPriority ? 'Priority ' + selectedPriority : 'Select Priority' }} <i
-                            class="fa fa-caret-down priority-dropdown-btn"></i>
+                        {{ selectedPriority ? 'Priority ' + selectedPriority : 'Select Priority' }}
                     </button>
-                    <ul class="fts-dropdown-menu" [class.show]="isPriorityDropdownOpen">
-                        <li class="fts-dropdown-item" (click)="selectPriority(1)"
-                            [class.selected]="selectedPriority === 1">
+                    <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
+                        <a class="dropdown-item" (click)="selectPriority(1)">
                             <i class="fas fa-flag color-green"></i> Priority 1
-                        </li>
-                        <li class="fts-dropdown-item" (click)="selectPriority(2)"
-                            [class.selected]="selectedPriority === 2">
+                        </a>
+                        <a class="dropdown-item" (click)="selectPriority(2)">
                             <i class="fas fa-flag color-yellow"></i> Priority 2
-                        </li>
-                        <li class="fts-dropdown-item" (click)="selectPriority(3)"
-                            [class.selected]="selectedPriority === 3">
+                        </a>
+                        <a class="dropdown-item" (click)="selectPriority(3)">
                             <i class="fas fa-flag color-red"></i> Priority 3
-                        </li>
-                    </ul>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="datePicker">Due date</label>
-                    <input type="date" class="form-control" id="datePicker" [(ngModel)]="selectedDate">
+                    <input type="date" class="form-control" id="datePicker" [(ngModel)]="selectedDate"
+                        [disabled]="isViewMode">
                 </div>
             </div>
         </div>

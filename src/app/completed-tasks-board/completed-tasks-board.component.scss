@@ -122,6 +122,11 @@
     margin-left: auto;
 }
 
+.centered-div {
+    display: flex;
+    justify-content: center;
+}
+
 .btn:not(:disabled):not(.disabled) {
     cursor: pointer;
 }

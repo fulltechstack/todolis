@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "DoThis",
+    "name": "Todolis",
     "version": "1.0",
     "description": "Work-life balance made easy with DoThis for Chrome.",
     "action": {
@@ -12,7 +12,6 @@
         }
     },
     "permissions": [
-        "activeTab",
         "storage"
     ]
 }
