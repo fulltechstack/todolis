@@ -80,3 +80,20 @@
 .sidebar.collapsed~.main-content {
     margin-left: 80px;
 }
+
+a {
+    /* Your existing styles for the links */
+
+    &.active {
+        background-color: #756AB6;
+        /* Background color for active tab */
+        color: #FAF3F0 !important;
+        /* Text color for active tab */
+    }
+
+}
+
+a:hover {
+    color: #E97777 !important;
+
+}

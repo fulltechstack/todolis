@@ -12,9 +12,12 @@
                         title="Sorting">
                         <i class="fa-solid fa-sort"></i></button>
                     <div class="dropdown-menu" aria-labelledby="sortDropdownMenu">
-                        <a class="dropdown-item" (click)="selectPriority(1)">High priority first</a>
-                        <a class="dropdown-item" (click)="selectPriority(2)">Low priority first</a>
-                        <a class="dropdown-item" (click)="sortDueDate()">Earliest due-date first</a>
+                        <a class="dropdown-item" (click)="selectPriority(1)"> <i
+                                class="fa-solid fa-arrow-up-wide-short"></i> High priority first</a>
+                        <a class="dropdown-item" (click)="selectPriority(2)"> <i
+                                class="fa-solid fa-arrow-down-short-wide"></i> Low priority first</a>
+                        <a class="dropdown-item" (click)="sortDueDate()"> <i
+                                class="fa-solid fa-arrow-up-wide-short"></i> Earliest due-date first</a>
                     </div>
                 </div>
             </div>
@@ -36,7 +39,8 @@
                                             <div class="custom-checkbox custom-control">
                                                 <input class="custom-control-input" [id]="'customCheckbox-' + task.id"
                                                     type="checkbox" (change)="completeTask(task)"
-                                                    [style.border-color]="getBorderColor(task.priority)" />
+                                                    [style.border-color]="getBorderColor(task.priority)"
+                                                    title="Mark as complete" />
                                                 <label class="custom-control-label"
                                                     [for]="'customCheckbox-' + task.id">&nbsp;</label>
                                             </div>
