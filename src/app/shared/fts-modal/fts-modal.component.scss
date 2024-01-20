@@ -200,10 +200,11 @@ $secondary-color: #0056b3;
     cursor: not-allowed !important;
 }
 
-.due-date{
+.due-date {
     margin-right: 10px;
 }
-.due-time{
+
+.due-time {
     margin-right: 3px;
 }
 
@@ -264,7 +265,8 @@ label {
 
 .form-group .form-control {
     border-color: #ccc;
-    padding: 5px;
+    padding: 1px;
+    min-height: 30px;
     border-radius: 4px;
     max-height: 27px;
     font-size: 12px;

@@ -86,7 +86,8 @@
         </div>
         <div class="modal-footer">
             <button class="close-button modal-button" (click)="closeModal($event)" title="Close">Cancel</button>
-            <button class="save-button modal-button" (click)="save()" title="Save task">Save</button>
+            <button class="save-button modal-button" *ngIf="!isViewMode" (click)="save()"
+                title="Save task">Save</button>
         </div>
     </div>
 </div>
