@@ -91,9 +91,15 @@ a {
         /* Text color for active tab */
     }
 
+    &.active:hover {
+        background-color: #756AB6;
+        /* Background color for active tab */
+        color: #FAF3F0 !important;
+        /* Text color for active tab */
+    }
+
 }
 
 a:hover {
     color: #E97777 !important;
-
 }
