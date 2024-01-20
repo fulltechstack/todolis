@@ -71,8 +71,6 @@ button.close:hover {
     /* Add some padding to the left for spacing */
 }
 
-.alert-message {}
-
 .close {
     font-size: 12px;
     color: #fff;
@@ -85,10 +83,11 @@ button.close:hover {
 }
 
 .undo {
-    padding: 0px 4px;
-    border-radius: 2px;
-    -webkit-appearance: none;
-    background-color: #707282;
+    // padding: 0px 4px;
+    // border-radius: 2px;
+    // -webkit-appearance: none;
+    // background-color: #707282;
+    background: 0 0;
     cursor: pointer;
     border: 0;
     margin-left: 10px;
@@ -180,7 +179,8 @@ button.close:hover {
 }
 
 .hover-border:hover {
-    background-color: #828288;
+    // background-color: #828288;
+    scale: (1.1);
 }
 
 .alert-right {

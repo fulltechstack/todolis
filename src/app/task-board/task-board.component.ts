@@ -130,7 +130,7 @@ export class TaskBoardComponent {
     task.completedOn = `${year}-${month}-${day}`;
     this.updateTaskInLocalStorage(task);
     this.ftsModalService.notifyTaskUpdated();
-    this.alertService.alert(AlertType.Success, '1 task completed', false, 5000, true, 'Undo', task);
+    this.alertService.alert(AlertType.Success, '1 task completed', true, 5000, true, 'Undo', task);
   }
 
   undoCompleteTask(task: Task) {
