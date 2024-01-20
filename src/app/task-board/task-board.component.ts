@@ -48,6 +48,7 @@ export class TaskBoardComponent {
   noTaskAdded: boolean = false;
 
   private taskUpdatedSubscription: Subscription;
+  private alertActionSubscription: Subscription;
 
   ngOnInit() {
     // Retrieve tasks from local storage
@@ -66,11 +67,15 @@ export class TaskBoardComponent {
       // Update the tasks array when notified
       this.updateTasks();
     });
+    this.alertActionSubscription = this.alertService.buttonClick$.subscribe((data) => {
+      this.undoCompleteTask(data);
+    });
   }
 
   ngOnDestroy() {
     // Unsubscribe from the subject to prevent memory leaks
     this.taskUpdatedSubscription.unsubscribe();
+    this.alertActionSubscription.unsubscribe();
   }
 
   addTask() {
@@ -125,7 +130,16 @@ export class TaskBoardComponent {
     task.completedOn = `${year}-${month}-${day}`;
     this.updateTaskInLocalStorage(task);
     this.ftsModalService.notifyTaskUpdated();
-    this.alertService.alert(AlertType.Success, '1 task completed', true, 5000);
+    this.alertService.alert(AlertType.Success, '1 task completed', false, 5000, true, 'Undo', task);
+  }
+
+  undoCompleteTask(task: Task) {
+    task.isComplete = false;
+    task.completedAt = '';
+    task.completedOn = '';
+    this.updateTaskInLocalStorage(task);
+    this.ftsModalService.notifyTaskUpdated();
+    this.alertService.alert(AlertType.Success, 'Undone successfully');
   }
 
   private updateTasks() {
@@ -282,6 +296,6 @@ export class TaskBoardComponent {
     }
 
     return timeLeftString + 'left';
-}
+  }
 
 }

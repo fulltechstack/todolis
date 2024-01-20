@@ -35,11 +35,13 @@
 
     @keyframes fadeRightToLeft {
         from {
-            transform: translateX(100%); /* Start from the right side of the container */
+            transform: translateX(100%);
+            /* Start from the right side of the container */
         }
-    
+
         to {
-            transform: translateX(0); /* Transition to its original position */
+            transform: translateX(0);
+            /* Transition to its original position */
         }
     }
 }
@@ -48,10 +50,16 @@ button.close {
     -webkit-appearance: none;
     padding: 0;
     cursor: pointer;
-    background: 0 0;
+    background-color: #707282;
     border: 0;
     margin-left: 10px;
     right: 0;
+    padding: 0px 4px;
+    border-radius: 2px;
+}
+
+button.close:hover {
+    background-color: #828288;
 }
 
 .alert-content {
@@ -74,6 +82,21 @@ button.close {
     margin-right: 8px;
     /* Push the "Close" button to the extreme right */
 
+}
+
+.undo {
+    padding: 0px 4px;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    background-color: #707282;
+    cursor: pointer;
+    border: 0;
+    margin-left: 10px;
+    right: 0;
+    font-size: 12px;
+    color: #fff;
+    opacity: 0.9;
+    font-weight: normal;
 }
 
 .alert_success {
@@ -154,4 +177,14 @@ button.close {
 
 .fade_error strong {
     color: #f95668
+}
+
+.hover-border:hover {
+    background-color: #828288;
+}
+
+.alert-right {
+    display: flex;
+    justify-content: center;
+
 }

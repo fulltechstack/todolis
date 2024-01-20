@@ -4,8 +4,19 @@
         <div class="alert-content">
             <span class="alert-message">{{ alertConfig.message }}</span>
         </div>
-        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
-            <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
-        </button>
+        <div class="alert-right">
+            <div>
+                <button type="button" *ngIf="alertConfig.taskData" class="undo hover-border" aria-label="Close"
+                    (click)="clickPerformed(alertConfig.taskData)">
+                    <span aria-hidden="true"><i class="fa-solid fa-rotate-left"></i> Undo</span>
+                </button>
+            </div>
+            <div>
+                <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                    <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+                </button>
+            </div>
+        </div>
+
     </div>
 </div>

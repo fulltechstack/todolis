@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FtsAlertService } from '../services/fts-alert.service';
 import { AlertConfig, AlertType } from '../models/alert-config.model';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-fts-alert',
@@ -31,6 +32,10 @@ export class FtsAlertComponent implements OnInit {
 
   closeAlert() {
     this.alertService.clear();
+  }
+
+  clickPerformed(task: Task) {
+    this.alertService.notifyButtonClick(task);
   }
 
   getAlertClass(): string {
