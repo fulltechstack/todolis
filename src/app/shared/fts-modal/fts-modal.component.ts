@@ -78,7 +78,7 @@ export class FtsModalComponent {
     }
 
     if (!this.taskDescription) {
-      this.taskDescription = 'Drink plenty of water';
+      this.taskDescription = 'Description';
     }
 
     const newTask: Task = {
