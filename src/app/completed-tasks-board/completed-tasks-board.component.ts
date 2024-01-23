@@ -163,7 +163,6 @@ export class CompletedTasksBoardComponent {
   }
 
   getPillColors(task: Task, setBg: boolean): string {
-    debugger
     const completedDateTime = new Date(`${task.completedOn} ${task.completedAt}`);
     const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`);
 

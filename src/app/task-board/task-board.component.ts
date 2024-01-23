@@ -4,6 +4,7 @@ import { Task } from '../shared/models/task.model';
 import { Subscription } from 'rxjs';
 import { FtsAlertService } from '../shared/services/fts-alert.service';
 import { AlertType } from '../shared/models/alert-config.model';
+import { NotificationService } from '../shared/services/notification.service';
 
 @Component({
   selector: 'app-task-board',
@@ -62,7 +63,8 @@ export class TaskBoardComponent {
     this.checkNoTaskAdded();
   }
 
-  constructor(private ftsModalService: FtsModalService, private alertService: FtsAlertService) {
+  constructor(private ftsModalService: FtsModalService, private alertService: FtsAlertService,
+    private notificationService: NotificationService) {
     this.taskUpdatedSubscription = this.ftsModalService.taskUpdatedSubject.subscribe(() => {
       // Update the tasks array when notified
       this.updateTasks();
@@ -113,6 +115,7 @@ export class TaskBoardComponent {
       this.tasks = existingTasks;
     }
     this.ftsModalService.notifyTaskUpdated();
+    this.notificationService.deleteAlarm(taskToDelete.id);
     this.alertService.alert(AlertType.Success, '1 task deleted');
 
   }
@@ -268,7 +271,6 @@ export class TaskBoardComponent {
   }
 
   getTimeLeft(task: Task): string {
-    debugger
     const now = new Date().getTime(); // Convert current date to milliseconds
     const dueDateTime = new Date(`${task.duedate} ${task.dueTime}`).getTime(); // Convert task's due date and time to milliseconds
     const timeDifference = dueDateTime - now;

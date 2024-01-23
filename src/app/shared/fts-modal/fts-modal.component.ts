@@ -1,8 +1,10 @@
+/// <reference types="chrome"/>
 import { Component, Input, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { FtsModalService } from '../fts-modal.service';
 import { Task } from '../models/task.model';
 import { AlertType } from '../models/alert-config.model';
 import { FtsAlertService } from '../services/fts-alert.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-fts-modal',
@@ -38,7 +40,8 @@ export class FtsModalComponent {
   constructor(
     private ftsModalService: FtsModalService,
     private elementRef: ElementRef,
-    private alertService: FtsAlertService
+    private alertService: FtsAlertService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -112,6 +115,9 @@ export class FtsModalComponent {
       const existingIndex = existingTasks.findIndex((t: Task) => t.id === newTask.id);
       if (existingIndex !== -1) {
         existingTasks[existingIndex] = { ...existingTasks[existingIndex], ...newTask };
+        this.alertService.alert(AlertType.Success, 'task edited');
+        this.notificationService.deleteAlarm(newTask.id);
+        this.notificationService.createAlarm(newTask);
       }
     } else {
       // Increment the sequence for all existing tasks
@@ -120,6 +126,7 @@ export class FtsModalComponent {
       });
 
       existingTasks.unshift(newTask); // Add the new task at the beginning of the array
+      this.notificationService.createAlarm(newTask);
       this.alertService.alert(AlertType.Success, '1 new task added');
     }
 
@@ -127,7 +134,6 @@ export class FtsModalComponent {
     this.ftsModalService.notifyTaskUpdated();
     this.ftsModalService.closeModal();
   }
-
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

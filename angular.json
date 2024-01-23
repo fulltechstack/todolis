@@ -29,9 +29,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json",
-              "src/icon16.png",
-              "src/icon48.png",
-              "src/icon128.png"
+              "src/icon.png",
+              "src/background.js"
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
