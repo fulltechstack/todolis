@@ -1,0 +1,40 @@
+Effective Date: 09/02/2025
+
+1. Overview
+Welcome to Advanced PiP, a Chrome extension designed to enhance your video-watching experience by enabling Picture-in-Picture mode with playback controls. This Privacy Policy explains how we handle your data and protect your privacy while using Advanced PiP.
+
+2. Data Collection
+Advanced PiP does not collect, store, or transmit any personal data from users.
+
+Specifically, we do not collect:
+Personally Identifiable Information (such as name, email address, or identification numbers)
+Health information
+Financial and payment information
+Authentication information
+Personal communications
+Location information
+Web history
+User activity (such as clicks, mouse position, or keystroke logging)
+Website content (text, images, videos, or hyperlinks)
+3. Data Usage
+Since Advanced PiP does not collect any user data, there is no data usage.
+
+4. Data Storage and Security
+All operations of Advanced PiP occur locally within your browser.
+No data is transmitted to external servers or shared with third parties.
+5. User Rights
+As Advanced PiP does not store any data, there is no need for data access, modification, or deletion rights.
+
+6. Third-Party Services
+Advanced PiP does not integrate with any third-party services or APIs.
+
+7. Cookies and Tracking
+Advanced PiP does not use cookies or any tracking technologies.
+
+8. Updates to Privacy Policy
+We may update this Privacy Policy to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted within the extension.
+
+9. Contact Information
+If you have any questions or concerns about our privacy practices, please contact us at [Your Contact Information].
+
+By using Advanced PiP, you acknowledge that you have read and agree to this Privacy Policy.
