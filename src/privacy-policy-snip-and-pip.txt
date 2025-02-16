@@ -1,0 +1,40 @@
+Privacy Policy for Snip & PiP Chrome Extension
+Effective Date: 16/01/2024
+
+1. Overview
+Welcome to Snip & PiP, a Chrome extension that allows you to snip any part of your tab or pop out entire content into a floating window for seamless multitasking. This Privacy Policy explains how we collect, use, and protect your information. By using Snip & PiP, you agree to the practices outlined in this policy.
+
+2. Data Collection
+User-Generated Content: Snip & PiP enables users to select and display parts of their browser tabs in a floating window. This selection is processed locally on your device and is not stored or transmitted externally.
+Usage Data: We may collect anonymous data regarding feature usage (e.g., how often PiP mode is activated) to improve functionality. However, this data does not contain personally identifiable information.
+3. Data Usage
+We use the collected data to:
+
+Provide snipping and floating window functionality for enhanced multitasking.
+Optimize and improve user experience based on feedback.
+Maintain extension performance and ensure smooth operation.
+4. Data Storage and Security
+Your selections and snips are processed locally and are never stored on our servers.
+We do not transmit, share, or sell your data to any third party.
+We implement security measures to protect the integrity of your browsing experience.
+5. User Rights
+You have the right to:
+
+Control, modify, or stop using the extension at any time.
+Remove all extension-related data by uninstalling Snip & PiP.
+6. Third-Party Services
+Snip & PiP does not integrate with third-party services or APIs, and we do not share your data with any external entities.
+
+7. Cookies and Tracking
+Snip & PiP does not use cookies, trackers, or analytics services that collect personal data.
+
+8. Auto-Heal Feature
+Our extension provides an Auto-Heal button that resets the extension if it encounters any issues. This ensures a smooth experience without requiring manual troubleshooting.
+
+9. Updates to Privacy Policy
+We may update this Privacy Policy periodically. Any changes will be posted within the extension settings.
+
+10. Contact Information
+If you have any questions or concerns about our privacy practices, please contact us at [Your Contact Information].
+
+By using Snip & PiP, you acknowledge that you have read and agree to this Privacy Policy.
